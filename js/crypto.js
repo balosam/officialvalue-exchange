@@ -24,7 +24,7 @@
     '&include_24hr_change=true';
 
   var COINGECKO_DIRECT = 'https://api.coingecko.com/api/v3/simple/price' + CG_PARAMS;
-  var COINGECKO_PROXY  = 'https://corsproxy.io/?' +
+  var COINGECKO_PROXY  = 'https://api.allorigins.win/raw?url=' +
     encodeURIComponent('https://api.coingecko.com/api/v3/simple/price' + CG_PARAMS);
 
 
