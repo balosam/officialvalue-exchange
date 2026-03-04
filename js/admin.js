@@ -24,8 +24,10 @@
     itunes:  { name: 'iTunes',  rate: 1400, unit: 'per $1' },
     ebay:    { name: 'eBay',    rate: 1380, unit: 'per $1' },
     walmart: { name: 'Walmart', rate: 1360, unit: 'per $1' },
-    amex:    { name: 'Amex',    rate: 1420, unit: 'per $1' },
-    xbox:    { name: 'Xbox',    rate: 1390, unit: 'per $1' },
+    amex:      { name: 'Amex',       rate: 1420, unit: 'per $1' },
+    xbox:      { name: 'Xbox',       rate: 1390, unit: 'per $1' },
+    razergold: { name: 'Razer Gold', rate: 1480, unit: 'per $1' },
+    mazy:      { name: "Macy's",     rate: 1360, unit: 'per $1' },
   };
 
   /* ── Load rates from localStorage or use defaults ─────── */
