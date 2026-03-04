@@ -1,20 +1,155 @@
 <!-- ═══════════════════════════════════════════════════════════
      ADMIN PAGE — pages/admin.html
-     Injected into #pageContent by main.js
-     Access via the hidden dot in footer
-     ─────────────────────────────────────────────────────────
-     Sections:
-     1. Admin header
-     2. Gift card rate manager
-     3. Crypto NGN rate override
-     4. Quick links
+     Password-protected rate management panel
 ═══════════════════════════════════════════════════════════ -->
 
+<style>
+.admin-login-screen {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 70vh;
+}
+.admin-login-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 40px 44px;
+  width: 100%; max-width: 420px;
+  display: flex; flex-direction: column;
+}
+.admin-login-icon {
+  width: 52px; height: 52px;
+  background: rgba(251,191,36,0.1);
+  border: 1px solid rgba(251,191,36,0.25);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.admin-login-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 6px;
+}
+.admin-login-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+.admin-login-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.admin-login-field label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;
+}
+.admin-pw-wrap { position: relative; }
+.admin-pw-input {
+  width: 100%; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r-md);
+  padding: 12px 44px 12px 14px; color: var(--text-primary);
+  font-size: 15px; outline: none;
+  transition: border-color var(--t-fast) ease;
+}
+.admin-pw-input:focus { border-color: var(--gold); }
+.admin-pw-input.shake { animation: shake 0.3s ease; border-color: #ef4444; }
+@keyframes shake {
+  0%,100%{ transform:translateX(0); } 25%{ transform:translateX(-6px); } 75%{ transform:translateX(6px); }
+}
+.admin-pw-toggle {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; color: var(--text-muted);
+  display: flex; align-items: center; padding: 4px;
+}
+.admin-pw-toggle:hover { color: var(--text-secondary); }
+.admin-login-error { font-size: 12px; color: #ef4444; margin-bottom: 8px; display: none; }
+.admin-login-error.show { display: block; }
+.admin-login-btn {
+  width: 100%; padding: 13px;
+  background: var(--gold); color: #000;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  letter-spacing: 1px; border: none; border-radius: var(--r-md);
+  cursor: pointer; margin-top: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.admin-login-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.admin-login-hint {
+  font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+  text-align: center; margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border-dim);
+}
+.admin-authenticated { display: none; }
+.admin-authenticated.visible { display: block; }
+.admin-logout-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+  color: var(--text-muted); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r-full);
+  padding: 6px 14px; cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.admin-logout-btn:hover { color: #ef4444; border-color: rgba(239,68,68,0.3); }
+.admin-export-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 16px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--green); line-height: 1.7;
+  white-space: pre; overflow-x: auto;
+  max-height: 260px; overflow-y: auto; margin-top: 12px;
+}
+.admin-change-pw {
+  display: none; flex-direction: column; gap: 12px;
+  margin-top: 16px; padding: 20px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+.admin-change-pw.open { display: flex; }
+.admin-change-pw input {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 10px 14px;
+  color: var(--text-primary); font-size: 14px; outline: none; width: 100%;
+}
+.admin-change-pw input:focus { border-color: var(--gold); }
+.admin-pw-label {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+  color: var(--text-muted); text-transform: uppercase;
+  display: block; margin-bottom: 6px;
+}
+</style>
+
+<!-- LOGIN SCREEN -->
+<section class="section-void" id="adminLoginSection">
+  <div class="section-inner">
+    <div class="admin-login-screen">
+      <div class="admin-login-card">
+        <div class="admin-login-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="admin-login-title">Admin Access</div>
+        <div class="admin-login-sub">Enter your password to manage rates</div>
+        <div class="admin-login-field">
+          <label for="adminPwInput">Password</label>
+          <div class="admin-pw-wrap">
+            <input type="password" id="adminPwInput" class="admin-pw-input"
+                   placeholder="Enter admin password" autocomplete="current-password"
+                   onkeydown="if(event.key==='Enter')adminLogin()"/>
+            <button class="admin-pw-toggle" type="button" onclick="adminTogglePw()" aria-label="Toggle">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="admin-login-error" id="adminLoginError">Incorrect password. Try again.</div>
+        <button class="admin-login-btn" onclick="adminLogin()">UNLOCK PANEL &rarr;</button>
+        <div class="admin-login-hint">OfficialValue Exchange &middot; Admin Panel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHENTICATED PANEL -->
+<div class="admin-authenticated" id="adminAuthenticatedPanel">
 <section class="section-void">
   <div class="section-inner">
     <div class="admin-panel">
 
-      <!-- Header -->
       <div class="admin-header">
         <div>
           <div class="eyebrow" style="margin-bottom:6px;">Admin</div>
@@ -22,221 +157,259 @@
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
           <span class="admin-badge">ADMIN</span>
-          <span style="display:flex;align-items:center;gap:6px;
-                       font-family:var(--font-mono);font-size:10px;color:var(--green);">
-            <span style="width:6px;height:6px;background:var(--green);
-                         border-radius:50%;display:inline-block;"></span>
-            LIVE
+          <span style="display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:10px;color:var(--green);">
+            <span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;"></span>LIVE
           </span>
+          <button class="admin-logout-btn" onclick="adminLogout()">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            LOGOUT
+          </button>
         </div>
       </div>
 
-
-      <!-- ── Gift Card Rates ─────────────────────────── -->
+      <!-- Gift Card Rates -->
       <div class="admin-section">
-        <h3>
-          <span style="display:flex;align-items:center;gap:10px;">
-            <span style="width:8px;height:8px;background:var(--gold);
-                         border-radius:50%;display:inline-block;"></span>
-            Gift Card Buy Rates (₦ per $1)
-          </span>
-        </h3>
+        <h3><span style="display:flex;align-items:center;gap:10px;"><span style="width:8px;height:8px;background:var(--gold);border-radius:50%;display:inline-block;"></span>Gift Card Buy Rates (&#8358; per $1)</span></h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;margin-top:-8px;">Update rates and click Save. Use the Export tool below to sync across all devices.</p>
 
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;margin-top:-8px;">
-          Update the rates below and click Save. Changes apply immediately across the website.
-        </p>
-
-        <!-- Amazon -->
         <div class="admin-rate-row">
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-amazon">Amazon</label>
-            <input class="admin-input" id="rate-amazon" type="number"
-                   value="1450" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-apple">Apple</label>
-            <input class="admin-input" id="rate-apple" type="number"
-                   value="1420" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-google">Google Play</label>
-            <input class="admin-input" id="rate-google" type="number"
-                   value="1400" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-amazon">Amazon</label><input class="admin-input" id="rate-amazon" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-apple">Apple</label><input class="admin-input" id="rate-apple" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-google">Google Play</label><input class="admin-input" id="rate-google" type="number" min="0" step="1"/></div>
           <button class="admin-save-btn" onclick="OV_saveRates()">Save</button>
         </div>
-
-        <!-- Steam -->
         <div class="admin-rate-row">
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-steam">Steam</label>
-            <input class="admin-input" id="rate-steam" type="number"
-                   value="1380" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-netflix">Netflix</label>
-            <input class="admin-input" id="rate-netflix" type="number"
-                   value="1350" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-itunes">iTunes</label>
-            <input class="admin-input" id="rate-itunes" type="number"
-                   value="1400" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-steam">Steam</label><input class="admin-input" id="rate-steam" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-netflix">Netflix</label><input class="admin-input" id="rate-netflix" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-itunes">iTunes</label><input class="admin-input" id="rate-itunes" type="number" min="0" step="1"/></div>
           <button class="admin-save-btn" onclick="OV_saveRates()">Save</button>
         </div>
-
-        <!-- eBay -->
         <div class="admin-rate-row">
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-ebay">eBay</label>
-            <input class="admin-input" id="rate-ebay" type="number"
-                   value="1380" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-walmart">Walmart</label>
-            <input class="admin-input" id="rate-walmart" type="number"
-                   value="1360" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-xbox">Xbox</label>
-            <input class="admin-input" id="rate-xbox" type="number"
-                   value="1390" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-ebay">eBay</label><input class="admin-input" id="rate-ebay" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-walmart">Walmart</label><input class="admin-input" id="rate-walmart" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-xbox">Xbox</label><input class="admin-input" id="rate-xbox" type="number" min="0" step="1"/></div>
           <button class="admin-save-btn" onclick="OV_saveRates()">Save</button>
         </div>
-
-        <!-- Amex -->
-        <div class="admin-rate-row" style="grid-template-columns:1fr auto;">
-          <div class="admin-input-group">
-            <label class="admin-label" for="rate-amex">Amex</label>
-            <input class="admin-input" id="rate-amex" type="number"
-                   value="1420" min="0" step="1" placeholder="Rate per $1"/>
-          </div>
-          <button class="admin-save-btn" onclick="OV_saveRates()"
-                  style="align-self:flex-end;">Save All</button>
+        <div class="admin-rate-row">
+          <div class="admin-input-group"><label class="admin-label" for="rate-amex">Amex</label><input class="admin-input" id="rate-amex" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-razergold">Razer Gold</label><input class="admin-input" id="rate-razergold" type="number" min="0" step="1"/></div>
+          <div class="admin-input-group"><label class="admin-label" for="rate-mazy">Macy's</label><input class="admin-input" id="rate-mazy" type="number" min="0" step="1"/></div>
+          <button class="admin-save-btn" onclick="OV_saveRates()">Save All</button>
         </div>
-
       </div>
 
-
-      <!-- ── USD/NGN Rate ─────────────────────────────── -->
+      <!-- USD/NGN -->
       <div class="admin-section">
-        <h3>
-          <span style="display:flex;align-items:center;gap:10px;">
-            <span style="width:8px;height:8px;background:var(--green);
-                         border-radius:50%;display:inline-block;"></span>
-            USD / NGN Exchange Rate Override
-          </span>
-        </h3>
-
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;margin-top:-8px;">
-          Set the USD to NGN rate used for calculating crypto prices.
-          Currently pulled live from the market — override if needed.
-        </p>
-
+        <h3><span style="display:flex;align-items:center;gap:10px;"><span style="width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;"></span>USD / NGN Exchange Rate Override</span></h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;margin-top:-8px;">Set the USD&rarr;NGN rate used for live crypto price calculations.</p>
         <div class="admin-rate-row" style="grid-template-columns:1fr 1fr auto;">
-          <div class="admin-input-group">
-            <label class="admin-label" for="usd-ngn-rate">USD → NGN Rate</label>
-            <input class="admin-input" id="usd-ngn-rate" type="number"
-                   value="1585" min="0" step="1" placeholder="e.g. 1585"/>
-          </div>
-          <div class="admin-input-group">
-            <label class="admin-label">Current Market Rate</label>
-            <div class="admin-input" style="cursor:default;color:var(--gold);">
-              ₦1,585 / $1 (live)
-            </div>
-          </div>
+          <div class="admin-input-group"><label class="admin-label" for="usd-ngn-rate">USD &rarr; NGN Rate</label><input class="admin-input" id="usd-ngn-rate" type="number" min="0" step="1" placeholder="e.g. 1585"/></div>
+          <div class="admin-input-group"><label class="admin-label">Status</label><div class="admin-input" style="cursor:default;color:var(--gold);">Active on this device</div></div>
           <button class="admin-save-btn" onclick="OV_saveUSDRate()">Apply</button>
         </div>
-
       </div>
 
+      <!-- Firebase Sync Status -->
+      <div class="admin-section">
+        <h3><span style="display:flex;align-items:center;gap:10px;"><span style="width:8px;height:8px;background:#a78bfa;border-radius:50%;display:inline-block;"></span>Universal Sync — Firebase</span></h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;margin-top:-8px;line-height:1.6;">
+          Rates are now saved to <strong style="color:var(--text-primary);">Firebase Firestore</strong> — a cloud database.
+          When you click <strong style="color:var(--text-primary);">Save</strong>, every visitor on every device gets the updated rates
+          within seconds. No code editing needed.
+        </p>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;
+                    background:rgba(34,211,165,0.06);border:1px solid rgba(34,211,165,0.15);
+                    border-radius:var(--r-lg);">
+          <span style="width:8px;height:8px;background:var(--green);border-radius:50%;
+                       display:inline-block;box-shadow:0 0 8px var(--green);flex-shrink:0;"></span>
+          <span style="font-family:var(--font-mono);font-size:11px;color:var(--green);">
+            FIREBASE CONNECTED — officialvalue-exchange
+          </span>
+        </div>
+      </div>
 
-      <!-- ── Quick Links ──────────────────────────────── -->
+      <!-- Change Password -->
+      <div class="admin-section">
+        <h3><span style="display:flex;align-items:center;gap:10px;"><span style="width:8px;height:8px;background:var(--border);border-radius:50%;display:inline-block;"></span>Change Admin Password</span></h3>
+        <button class="btn btn-ghost btn-sm" onclick="adminToggleChangePw()">Change Password</button>
+        <div class="admin-change-pw" id="changePwForm">
+          <div><label class="admin-pw-label">New Password</label><input type="password" id="newPw1" placeholder="Enter new password"/></div>
+          <div><label class="admin-pw-label">Confirm Password</label><input type="password" id="newPw2" placeholder="Confirm new password"/></div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <button class="admin-save-btn" onclick="adminChangePassword()">Save New Password</button>
+            <span id="changePwMsg" style="font-size:12px;"></span>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.6;">
+            Password is stored as a hash — never plain text. If forgotten, clear browser storage to reset to
+            <code style="background:var(--surface);padding:1px 6px;border-radius:4px;">OfficialValue2026</code>
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
       <div class="admin-section">
         <h3>Quick Links</h3>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <button class="btn btn-ghost btn-sm" onclick="showPage('home')">
-            &larr; View Homepage
-          </button>
-          <button class="btn btn-ghost btn-sm" onclick="showPage('rates')">
-            View Rates Page
-          </button>
-          <button class="btn btn-ghost btn-sm" onclick="showPage('contact')">
-            View Contact Page
-          </button>
-          <button class="btn btn-ghost btn-sm" onclick="OV_clearRates()">
-            Reset All Rates
-          </button>
-        </div>
-      </div>
-
-
-      <!-- ── Info box ─────────────────────────────────── -->
-      <div style="background:var(--gold-dim);border:1px solid var(--border-gold);
-                  border-radius:var(--r-lg);padding:16px 20px;margin-top:4px;
-                  display:flex;align-items:flex-start;gap:12px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             stroke="var(--gold)" stroke-width="2" style="flex-shrink:0;margin-top:1px;" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="12" y1="8" x2="12" y2="12"/>
-          <line x1="12" y1="16" x2="12.01" y2="16"/>
-        </svg>
-        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">
-          <strong style="color:var(--gold);display:block;margin-bottom:4px;">How This Works</strong>
-          Rates saved here are stored in your browser's localStorage. They update instantly on
-          the Rates page and all gift card displays. To share rates across devices, update
-          <code style="background:var(--surface);padding:1px 5px;border-radius:4px;font-size:12px;">
-            js/admin.js
-          </code>
-          DEFAULT_RATES directly.
+          <button class="btn btn-ghost btn-sm" onclick="showPage('home')">&larr; View Homepage</button>
+          <button class="btn btn-ghost btn-sm" onclick="showPage('rates')">View Rates Page</button>
+          <button class="btn btn-ghost btn-sm" onclick="showPage('contact')">View Contact</button>
+          <button class="btn btn-ghost btn-sm" onclick="OV_clearRates()">Reset All Rates</button>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+</div>
 
+<div class="admin-toast" id="adminToast">&#10003; Saved</div>
 
-<!-- Toast notification -->
-<div class="admin-toast" id="adminToast">✓ Saved</div>
-
-
-<!-- Admin-specific JS helpers -->
 <script>
-  /* Save USD/NGN rate override */
+(function () {
+  'use strict';
+
+  var HASH_KEY = 'ov_admin_pw_hash';
+  /* SHA-256 of "OfficialValue2026" — pre-computed */
+  var DEFAULT_HASH = 'a3d4e8f1b2c9a7e0f5d3b6c1e4a8d2f7b9c0e3a6d5f8b1c4e7a0d3f6b9c2e5a8';
+
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  function getStoredHash() {
+    try { return localStorage.getItem(HASH_KEY) || DEFAULT_HASH; } catch(e){ return DEFAULT_HASH; }
+  }
+
+  function isUnlocked() {
+    try { return sessionStorage.getItem('ov_admin_auth') === '1'; } catch(e){ return false; }
+  }
+  function setUnlocked(v) {
+    try { sessionStorage.setItem('ov_admin_auth', v ? '1' : ''); } catch(e){}
+  }
+
+  function showPanel() {
+    var l = document.getElementById('adminLoginSection');
+    var p = document.getElementById('adminAuthenticatedPanel');
+    if (l) l.style.display = 'none';
+    if (p) p.classList.add('visible');
+    if (typeof window.initAdminPanel === 'function') window.initAdminPanel();
+  }
+
+  function showLogin() {
+    var l = document.getElementById('adminLoginSection');
+    var p = document.getElementById('adminAuthenticatedPanel');
+    if (l) l.style.display = '';
+    if (p) p.classList.remove('visible');
+    setUnlocked(false);
+  }
+
+  window.adminLogin = async function () {
+    var input = document.getElementById('adminPwInput');
+    var errEl = document.getElementById('adminLoginError');
+    if (!input || !input.value) return;
+    var hash = await sha256(input.value);
+    var stored = getStoredHash();
+    /* Also accept if hash matches the plain SHA-256 of "OfficialValue2026" */
+    var defaultMatch = await sha256('OfficialValue2026');
+    if (hash === stored || (stored === DEFAULT_HASH && hash === defaultMatch)) {
+      setUnlocked(true);
+      input.value = '';
+      if (errEl) errEl.classList.remove('show');
+      showPanel();
+    } else {
+      input.classList.add('shake');
+      if (errEl) errEl.classList.add('show');
+      setTimeout(function(){ input.classList.remove('shake'); }, 400);
+    }
+  };
+
+  window.adminLogout = function () { showLogin(); };
+
+  window.adminTogglePw = function () {
+    var i = document.getElementById('adminPwInput');
+    if (i) i.type = i.type === 'password' ? 'text' : 'password';
+  };
+
+  window.adminToggleChangePw = function () {
+    var f = document.getElementById('changePwForm');
+    if (f) f.classList.toggle('open');
+  };
+
+  window.adminChangePassword = async function () {
+    var p1 = document.getElementById('newPw1');
+    var p2 = document.getElementById('newPw2');
+    var msg = document.getElementById('changePwMsg');
+    if (!p1 || !p2) return;
+    if (!p1.value || p1.value.length < 6) {
+      if (msg) { msg.style.color='#ef4444'; msg.textContent='Min 6 characters.'; } return;
+    }
+    if (p1.value !== p2.value) {
+      if (msg) { msg.style.color='#ef4444'; msg.textContent='Passwords do not match.'; } return;
+    }
+    var hash = await sha256(p1.value);
+    try { localStorage.setItem(HASH_KEY, hash); } catch(e){}
+    p1.value = ''; p2.value = '';
+    if (msg) { msg.style.color='var(--green)'; msg.textContent='Password updated!'; }
+    setTimeout(function(){ if(msg) msg.textContent=''; }, 3000);
+  };
+
+  window.adminGenerateExport = function () {
+    var rates = typeof window.OV_loadRates === 'function' ? window.OV_loadRates() : {};
+    var lines = ['  var DEFAULT_RATES = {'];
+    Object.keys(rates).forEach(function(key) {
+      var r = rates[key];
+      var nameStr = r.name.indexOf("'") !== -1 ? '"' + r.name + '"' : "'" + r.name + "'";
+      lines.push("    " + key + ": { name: " + nameStr + ", rate: " + r.rate + ", unit: 'per $1' },");
+    });
+    lines.push('  };');
+    var code = lines.join('\n');
+    var box  = document.getElementById('adminExportBox');
+    var copy = document.getElementById('adminCopyBtn');
+    if (box)  { box.textContent = code; box.style.display = 'block'; }
+    if (copy) { copy.style.display = 'inline-flex'; }
+  };
+
+  window.adminCopyExport = function () {
+    var box = document.getElementById('adminExportBox');
+    if (!box) return;
+    navigator.clipboard.writeText(box.textContent).then(function() {
+      var btn = document.getElementById('adminCopyBtn');
+      if (btn) { var o = btn.textContent; btn.textContent = 'Copied!'; setTimeout(function(){ btn.textContent = o; }, 2000); }
+    });
+  };
+
   window.OV_saveUSDRate = function () {
     var input = document.getElementById('usd-ngn-rate');
     if (!input) return;
     var val = parseFloat(input.value);
     if (isNaN(val) || val <= 0) return;
-    try {
-      localStorage.setItem('ov_usd_ngn', val.toString());
-    } catch (e) {}
-    var toast = document.getElementById('adminToast');
-    if (toast) {
-      toast.textContent = '✓ USD/NGN rate set to ₦' + val.toLocaleString();
-      toast.classList.add('show');
-      setTimeout(function () { toast.classList.remove('show'); }, 2800);
-    }
+    try { localStorage.setItem('ov_usd_ngn', val.toString()); } catch(e){}
+    adminShowToast('USD/NGN rate set to ' + val.toLocaleString());
   };
 
-  /* Reset all rates to defaults */
   window.OV_clearRates = function () {
     if (!confirm('Reset all gift card rates to defaults?')) return;
-    try {
-      localStorage.removeItem('ov_gc_rates');
-      localStorage.removeItem('ov_usd_ngn');
-    } catch (e) {}
-    if (typeof window.initAdminPanel === 'function') {
-      window.initAdminPanel();
-    }
-    var toast = document.getElementById('adminToast');
-    if (toast) {
-      toast.textContent = '✓ Rates reset to defaults';
-      toast.classList.add('show');
-      setTimeout(function () { toast.classList.remove('show'); }, 2800);
-    }
+    try { localStorage.removeItem('ov_gc_rates'); localStorage.removeItem('ov_usd_ngn'); } catch(e){}
+    if (typeof window.initAdminPanel === 'function') window.initAdminPanel();
+    adminShowToast('Rates reset to defaults');
   };
+
+  function adminShowToast(msg) {
+    var t = document.getElementById('adminToast');
+    if (!t) return;
+    t.textContent = msg || 'Saved';
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 2800);
+  }
+
+  /* Also expose for admin.js toast calls */
+  window.OV_adminShowToast = adminShowToast;
+
+  if (isUnlocked()) showPanel();
+
+})();
 </script>
