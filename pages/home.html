@@ -225,6 +225,81 @@
 
 
 <!-- ═══════════════════════════════════════════════════════
+     2b. FEATURED CARDS — visual fan display
+═══════════════════════════════════════════════════════ -->
+<section class="featured-cards-section">
+  <div class="featured-cards-glow" aria-hidden="true"></div>
+
+  <div class="featured-cards-inner">
+
+    <!-- Left: copy -->
+    <div class="featured-cards-copy">
+      <div class="eyebrow">Top Rates This Week</div>
+      <h2>Cards We're <span class="text-gradient">Buying Right Now</span></h2>
+      <p>
+        We accept all major gift cards at the best rates in Nigeria.
+        Rate locked the moment you confirm — no last-minute changes.
+      </p>
+      <div class="featured-cards-list">
+        <div class="featured-card-row">
+          <img src="assets/images/gc-amazon.png" alt="Amazon" class="featured-card-row-icon"/>
+          <span class="featured-card-row-name">Amazon</span>
+          <span class="featured-card-row-rate" data-gc-rate="amazon">&#8358;1,450 / $1</span>
+        </div>
+        <div class="featured-card-row">
+          <img src="assets/images/gc-apple.png" alt="Apple" class="featured-card-row-icon"/>
+          <span class="featured-card-row-name">Apple</span>
+          <span class="featured-card-row-rate" data-gc-rate="apple">&#8358;1,420 / $1</span>
+        </div>
+        <div class="featured-card-row">
+          <img src="assets/images/gc-steam.png" alt="Steam" class="featured-card-row-icon"/>
+          <span class="featured-card-row-name">Steam</span>
+          <span class="featured-card-row-rate" data-gc-rate="steam">&#8358;1,380 / $1</span>
+        </div>
+        <div class="featured-card-row">
+          <img src="assets/images/gc-netflix.png" alt="Netflix" class="featured-card-row-icon"/>
+          <span class="featured-card-row-name">Netflix</span>
+          <span class="featured-card-row-rate" data-gc-rate="netflix">&#8358;1,350 / $1</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+        <a href="https://wa.me/2347019108587?text=Hello%2C%20I+want+to+sell+a+gift+card"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary btn-lg">
+          Sell Your Card &rarr;
+        </a>
+        <button class="btn btn-ghost btn-lg" onclick="showPage('rates')">
+          View All Rates
+        </button>
+      </div>
+    </div>
+
+    <!-- Right: fanned card display -->
+    <div class="featured-cards-visual" aria-hidden="true">
+      <div class="featured-cards-bg-glow"></div>
+      <div class="fc-card fc-card-back">
+        <img src="assets/images/gc-google.png" alt=""/>
+        <span>Google Play</span>
+      </div>
+      <div class="fc-card fc-card-mid">
+        <img src="assets/images/gc-steam.png" alt=""/>
+        <span>Steam</span>
+      </div>
+      <div class="fc-card fc-card-front">
+        <img src="assets/images/gc-apple.png" alt=""/>
+        <span>Apple</span>
+      </div>
+      <div class="fc-badge">
+        <span class="live-dot" style="width:6px;height:6px;"></span>
+        Live Rates
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
      3. WHY CHOOSE US
 ═══════════════════════════════════════════════════════ -->
 <section class="section-deep">
@@ -515,23 +590,23 @@
     <div class="assets-marquee-fade assets-marquee-fade-right" aria-hidden="true"></div>
     <div class="assets-marquee-track assets-scroll-left">
       <!-- Set 1 -->
-      <div class="asset-marquee-card"><div class="coin-icon coin-btc">₿</div><div class="asset-marquee-name">Bitcoin</div><div class="asset-marquee-ticker">BTC</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-eth">Ξ</div><div class="asset-marquee-name">Ethereum</div><div class="asset-marquee-ticker">ETH</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-usdt">₮</div><div class="asset-marquee-name">Tether</div><div class="asset-marquee-ticker">USDT</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-bnb">B</div><div class="asset-marquee-name">BNB</div><div class="asset-marquee-ticker">BNB</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-usdc">$</div><div class="asset-marquee-name">USD Coin</div><div class="asset-marquee-ticker">USDC</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-sol">◎</div><div class="asset-marquee-name">Solana</div><div class="asset-marquee-ticker">SOL</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-trx">T</div><div class="asset-marquee-name">TRON</div><div class="asset-marquee-ticker">TRX</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-ltc">Ł</div><div class="asset-marquee-name">Litecoin</div><div class="asset-marquee-ticker">LTC</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-btc.png" alt="Bitcoin"></div><div class="asset-marquee-name">Bitcoin</div><div class="asset-marquee-ticker">BTC</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-eth.png" alt="Ethereum"></div><div class="asset-marquee-name">Ethereum</div><div class="asset-marquee-ticker">ETH</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-usdt.png" alt="Tether"></div><div class="asset-marquee-name">Tether</div><div class="asset-marquee-ticker">USDT</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-bnb.png" alt="BNB"></div><div class="asset-marquee-name">BNB</div><div class="asset-marquee-ticker">BNB</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-usdc.png" alt="USD Coin"></div><div class="asset-marquee-name">USD Coin</div><div class="asset-marquee-ticker">USDC</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-sol.png" alt="Solana"></div><div class="asset-marquee-name">Solana</div><div class="asset-marquee-ticker">SOL</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-trx.png" alt="TRON"></div><div class="asset-marquee-name">TRON</div><div class="asset-marquee-ticker">TRX</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-ltc.png" alt="Litecoin"></div><div class="asset-marquee-name">Litecoin</div><div class="asset-marquee-ticker">LTC</div></div>
       <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="asset-marquee-card"><div class="coin-icon coin-btc">₿</div><div class="asset-marquee-name">Bitcoin</div><div class="asset-marquee-ticker">BTC</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-eth">Ξ</div><div class="asset-marquee-name">Ethereum</div><div class="asset-marquee-ticker">ETH</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-usdt">₮</div><div class="asset-marquee-name">Tether</div><div class="asset-marquee-ticker">USDT</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-bnb">B</div><div class="asset-marquee-name">BNB</div><div class="asset-marquee-ticker">BNB</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-usdc">$</div><div class="asset-marquee-name">USD Coin</div><div class="asset-marquee-ticker">USDC</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-sol">◎</div><div class="asset-marquee-name">Solana</div><div class="asset-marquee-ticker">SOL</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-trx">T</div><div class="asset-marquee-name">TRON</div><div class="asset-marquee-ticker">TRX</div></div>
-      <div class="asset-marquee-card"><div class="coin-icon coin-ltc">Ł</div><div class="asset-marquee-name">Litecoin</div><div class="asset-marquee-ticker">LTC</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-btc.png" alt="Bitcoin"></div><div class="asset-marquee-name">Bitcoin</div><div class="asset-marquee-ticker">BTC</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-eth.png" alt="Ethereum"></div><div class="asset-marquee-name">Ethereum</div><div class="asset-marquee-ticker">ETH</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-usdt.png" alt="Tether"></div><div class="asset-marquee-name">Tether</div><div class="asset-marquee-ticker">USDT</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-bnb.png" alt="BNB"></div><div class="asset-marquee-name">BNB</div><div class="asset-marquee-ticker">BNB</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-usdc.png" alt="USD Coin"></div><div class="asset-marquee-name">USD Coin</div><div class="asset-marquee-ticker">USDC</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-sol.png" alt="Solana"></div><div class="asset-marquee-name">Solana</div><div class="asset-marquee-ticker">SOL</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-trx.png" alt="TRON"></div><div class="asset-marquee-name">TRON</div><div class="asset-marquee-ticker">TRX</div></div>
+      <div class="asset-marquee-card"><div class="coin-marquee-icon"><img src="assets/images/coin-ltc.png" alt="Litecoin"></div><div class="asset-marquee-name">Litecoin</div><div class="asset-marquee-ticker">LTC</div></div>
     </div>
   </div>
 
