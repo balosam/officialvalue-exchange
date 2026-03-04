@@ -17,11 +17,16 @@
   /* ── Config ──────────────────────────────────────────── */
   var USD_TO_NGN   = 1585;   /* Update this rate as needed */
   var REFRESH_MS   = 60000;  /* Refresh every 60 seconds   */
-  var COINGECKO_URL =
-    'https://api.coingecko.com/api/v3/simple/price' +
-    '?ids=bitcoin,ethereum,tether,binancecoin,usd-coin' +
+
+  var CG_PARAMS =
+    '?ids=bitcoin,ethereum,tether,binancecoin,usd-coin,solana,tron,litecoin' +
     '&vs_currencies=usd' +
     '&include_24hr_change=true';
+
+  var COINGECKO_DIRECT = 'https://api.coingecko.com/api/v3/simple/price' + CG_PARAMS;
+  var COINGECKO_PROXY  = 'https://corsproxy.io/?' +
+    encodeURIComponent('https://api.coingecko.com/api/v3/simple/price' + CG_PARAMS);
+
 
   /* ── Coin metadata ───────────────────────────────────── */
   var COINS = {
@@ -123,20 +128,31 @@
   }
 
   /* ── Fetch prices from CoinGecko ─────────────────────── */
+  function applyData(data) {
+    updateTicker(data);
+    updateWidget(data);
+    updateRateCards(data);
+  }
+
   function fetchPrices() {
-    fetch(COINGECKO_URL)
+    /* Try direct first, fall back to CORS proxy if blocked */
+    fetch(COINGECKO_DIRECT)
       .then(function (res) {
-        if (!res.ok) throw new Error('CoinGecko HTTP ' + res.status);
+        if (!res.ok) throw new Error('direct ' + res.status);
         return res.json();
       })
-      .then(function (data) {
-        updateTicker(data);
-        updateWidget(data);
-        updateRateCards(data);
-      })
-      .catch(function (err) {
-        /* Silent fail — placeholder values remain visible */
-        console.warn('[OV Crypto] Price fetch failed:', err.message);
+      .then(applyData)
+      .catch(function () {
+        /* Direct blocked — try proxy */
+        fetch(COINGECKO_PROXY)
+          .then(function (res) {
+            if (!res.ok) throw new Error('proxy ' + res.status);
+            return res.json();
+          })
+          .then(applyData)
+          .catch(function (err) {
+            console.warn('[OV Crypto] Price fetch failed:', err.message);
+          });
       });
   }
 
