@@ -118,6 +118,9 @@
         if (typeof window.OV_refreshPrices === 'function') {
           window.OV_refreshPrices();
         }
+        if (typeof window.OV_syncRatesToPage === 'function') {
+          window.OV_syncRatesToPage();
+        }
       }
 
       if (name === 'rates') {

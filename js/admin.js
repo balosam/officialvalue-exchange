@@ -201,6 +201,23 @@
   /* ── Expose for export tool in admin.html ─────────────── */
   window.OV_loadRates  = loadLocalRates;
 
+  /* ── Sync Firebase rates to current page displays ────── */
+  window.OV_syncRatesToPage = function () {
+    /* Apply local rates immediately so UI isn't blank */
+    updateRateDisplays(loadLocalRates());
+    /* Then fetch from Firebase and overwrite with latest */
+    if (typeof window.OV_fbLoadRates === 'function') {
+      window.OV_fbLoadRates(
+        function (fbRates) {
+          var merged = Object.assign({}, DEFAULT_RATES, fbRates);
+          saveLocal(merged);
+          updateRateDisplays(merged);
+        },
+        function () {}
+      );
+    }
+  };
+
   /* ── On any page load — fetch Firebase rates into local ── */
   /* So visitors always get the latest without admin opening */
   (function syncOnLoad() {
