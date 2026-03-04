@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════════════════
+   OFFICIALVALUE EXCHANGE — ANIMATIONS.CSS
+   Keyframes · Transitions · Hover effects
+   ─────────────────────────────────────────────────────────
+   RULE: Nothing in this file hides content.
+   All elements are visible by default.
+   Animations are purely additive — they enhance,
+   never hide or block content from showing.
+   ─────────────────────────────────────────────────────────
+   1.  Core keyframes
+   2.  Live dot pulse
+   3.  Ticker scroll
+   4.  Page fade-in (CSS class, not JS-dependent)
+   5.  Hero canvas particles (handled in animations.js)
+   6.  Card hover shimmer
+   7.  Gold glow pulse
+   8.  Shimmer text sweep
+   9.  Floating badge bounce
+   10. FAQ accordion
+   11. Prefers-reduced-motion
+═══════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════
+   1. CORE KEYFRAMES
+══════════════════════════════════════════════════════════ */
+
+/* Fade up — used for page entrance */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in — simple opacity */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade left — slide in from right */
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale up — zoom in from slightly small */
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ticker scroll — infinite left scroll */
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Spin — used for loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   2. LIVE DOT PULSE
+   — the green dot in the hero badge and widget
+══════════════════════════════════════════════════════════ */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16,185,129,0.5);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 6px rgba(16,185,129,0);
+  }
+}
+
+.live-dot {
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   3. TICKER SCROLL
+══════════════════════════════════════════════════════════ */
+.ticker-track {
+  animation: tickerScroll 38s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   4. PAGE FADE-IN
+   Applied by main.js as a CSS class — not inline opacity:0.
+   Content is visible before class is applied.
+   Class adds a smooth entrance animation on top.
+══════════════════════════════════════════════════════════ */
+.page-entering {
+  animation: fadeUp 0.38s var(--ease-out) both;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   5. ORB BACKGROUND GLOW
+   Ambient background glows on various pages
+══════════════════════════════════════════════════════════ */
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(20px, -15px) scale(1.05);
+    opacity: 0.55;
+  }
+  66% {
+    transform: translate(-10px, 10px) scale(0.97);
+    opacity: 0.38;
+  }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+.orb-gold {
+  background: radial-gradient(circle, rgba(251,191,36,0.18) 0%, transparent 70%);
+}
+
+.orb-green {
+  background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+}
+
+.orb-blue {
+  background: radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   6. CARD HOVER SHIMMER
+   Top-edge shimmer line that appears on card hover
+══════════════════════════════════════════════════════════ */
+@keyframes shimmerSweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+/* Applied to cards that want a shimmer on hover */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(251,191,36,0.6) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: none;
+}
+
+.card-shimmer:hover::after {
+  animation: shimmerSweep 0.6s ease forwards;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   7. GOLD GLOW PULSE
+   Repeated breathing glow — used on key CTA elements
+══════════════════════════════════════════════════════════ */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(251,191,36,0.15); }
+  50%       { box-shadow: 0 0 40px rgba(251,191,36,0.30); }
+}
+
+.glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   8. SHIMMER TEXT SWEEP
+   Gold shimmer that sweeps across text — used on counters
+══════════════════════════════════════════════════════════ */
+@keyframes textShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    #fff8e0 40%,
+    var(--gold) 60%,
+    var(--gold-600) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 1.2s linear forwards;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   9. FLOATING BADGE BOUNCE
+   The floating badges on the hero widget
+══════════════════════════════════════════════════════════ */
+@keyframes badgeBounce {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.widget-float-badge {
+  animation: badgeBounce 4s ease-in-out infinite;
+}
+
+.fb-bottom {
+  animation-delay: 2s;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   10. FAQ ACCORDION
+   Smooth open/close — driven by CSS max-height trick
+══════════════════════════════════════════════════════════ */
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color var(--t-base) ease;
+}
+
+.faq-item:hover,
+.faq-item.open {
+  border-color: var(--border-gold);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--card);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--t-fast) ease;
+}
+
+.faq-question:hover {
+  background: var(--surface);
+}
+
+.faq-question-text {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.faq-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform var(--t-base) var(--ease-out),
+              background var(--t-fast) ease,
+              border-color var(--t-fast) ease;
+}
+
+.faq-icon svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.faq-item.open .faq-icon {
+  background: var(--gold-dim);
+  border-color: var(--border-gold);
+  color: var(--gold);
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s var(--ease-out);
+  background: var(--card);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 400px;
+}
+
+.faq-answer-inner {
+  padding: 0 20px 18px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   11. PREFERS REDUCED MOTION
+   Disable all animations for users who prefer it
+══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker-track {
+    animation: none;
+  }
+}

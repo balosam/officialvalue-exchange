@@ -1,0 +1,652 @@
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ PAGE — pages/faq.html
+     Injected into #pageContent by main.js
+     ─────────────────────────────────────────────────────────
+     Sections:
+     1. Page header
+     2. FAQ layout (sidebar categories + accordion groups)
+        - General
+        - Gift Cards
+        - Cryptocurrency
+        - Payments
+        - Security
+     3. Still have questions CTA
+═══════════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     1. PAGE HEADER
+═══════════════════════════════════════════════════════ -->
+<section class="section-void" style="padding-bottom:0;">
+  <div class="section-inner">
+    <div class="section-header" style="padding-bottom:48px;margin-bottom:0;">
+      <div class="eyebrow">FAQ</div>
+      <h1 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:14px;">
+        Frequently Asked Questions
+      </h1>
+      <p style="max-width:540px;margin:0 auto;font-size:16px;">
+        Everything you need to know about trading on OfficialValue Exchange.
+        Can't find your answer? Chat with us on WhatsApp — we respond instantly.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     2. FAQ LAYOUT
+═══════════════════════════════════════════════════════ -->
+<section class="section-void" style="padding-top:40px;">
+  <div class="section-inner">
+
+    <div class="faq-layout">
+
+      <!-- Sidebar categories -->
+      <aside class="faq-sidebar" aria-label="FAQ categories">
+        <button class="faq-cat-btn active" data-filter="all" onclick="filterFaq(this,'all')">
+          All Questions <span class="faq-cat-count">23</span>
+        </button>
+        <button class="faq-cat-btn" data-filter="faq-general" onclick="filterFaq(this,'faq-general')">
+          General <span class="faq-cat-count">5</span>
+        </button>
+        <button class="faq-cat-btn" data-filter="faq-giftcards" onclick="filterFaq(this,'faq-giftcards')">
+          Gift Cards <span class="faq-cat-count">5</span>
+        </button>
+        <button class="faq-cat-btn" data-filter="faq-crypto" onclick="filterFaq(this,'faq-crypto')">
+          Cryptocurrency <span class="faq-cat-count">4</span>
+        </button>
+        <button class="faq-cat-btn" data-filter="faq-payments" onclick="filterFaq(this,'faq-payments')">
+          Payments <span class="faq-cat-count">4</span>
+        </button>
+        <button class="faq-cat-btn" data-filter="faq-security" onclick="filterFaq(this,'faq-security')">
+          Security <span class="faq-cat-count">4</span>
+        </button>
+      </aside>
+
+      <!-- Mobile-only pill filter tabs (visible on small screens) -->
+      <div class="faq-filter-tabs" role="group" aria-label="Filter FAQ categories">
+        <button class="faq-filter-tab active" data-filter="all" onclick="filterFaq(this,'all')">All</button>
+        <button class="faq-filter-tab" data-filter="faq-general" onclick="filterFaq(this,'faq-general')">General</button>
+        <button class="faq-filter-tab" data-filter="faq-giftcards" onclick="filterFaq(this,'faq-giftcards')">Gift Cards</button>
+        <button class="faq-filter-tab" data-filter="faq-crypto" onclick="filterFaq(this,'faq-crypto')">Crypto</button>
+        <button class="faq-filter-tab" data-filter="faq-payments" onclick="filterFaq(this,'faq-payments')">Payments</button>
+        <button class="faq-filter-tab" data-filter="faq-security" onclick="filterFaq(this,'faq-security')">Security</button>
+      </div>
+
+      <!-- FAQ main content -->
+      <div class="faq-main">
+
+        <!-- ── GENERAL ─────────────────────────────────── -->
+        <div class="faq-group-section" id="faq-general">
+          <div class="faq-group-title">General</div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">What is OfficialValue Exchange?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  OfficialValue Exchange is Nigeria's most trusted platform for buying and selling
+                  cryptocurrency and gift cards. We offer the best market rates, instant payouts,
+                  and 24/7 customer support via WhatsApp. Since launching, we have completed over
+                  500,000 successful trades for more than 50,000 satisfied customers.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">How do I start trading?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Trading on OfficialValue Exchange is simple. Just follow these steps:
+                  <br><br>
+                  1. Send us a WhatsApp message on <strong>+234 701 910 8587</strong><br>
+                  2. Tell us what you want to trade (crypto or gift card) and the amount<br>
+                  3. We'll confirm the current rate for your trade immediately<br>
+                  4. Send your assets and receive payment directly to your bank account within minutes
+                  <br><br>
+                  No registration, no forms, no stress — just fast, simple trading.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Do I need to create an account?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  No account registration is required. All trading is done directly through
+                  WhatsApp. Simply send us a message, agree on the rate, complete the trade,
+                  and get paid. It's that simple.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">What hours are you available?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We are available 24 hours a day, 7 days a week — including weekends and
+                  public holidays. The crypto and gift card markets never sleep, and neither
+                  do we. You can send a message at any time and expect a prompt response.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Which states in Nigeria do you serve?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We serve customers across all 36 states in Nigeria and the FCT. Since our
+                  trading is done entirely via WhatsApp and payment is made by bank transfer,
+                  your physical location does not matter. Whether you're in Lagos, Abuja,
+                  Port Harcourt, Kano, or anywhere else — we can process your trade.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── GIFT CARDS ──────────────────────────────── -->
+        <div class="faq-group-section" id="faq-giftcards">
+          <div class="faq-group-title">Gift Cards</div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Which gift cards do you accept?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We accept over 40 different gift cards including: Amazon, Apple, Google Play,
+                  Steam, Netflix, iTunes, eBay, Walmart, Xbox, Amex, and many more. If you
+                  have a gift card not listed here, send us a message on WhatsApp and we'll
+                  let you know if we can accept it. We are constantly expanding our list.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">How do I sell my gift card?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  To sell your gift card:
+                  <br><br>
+                  1. Message us on WhatsApp with the gift card type and denomination<br>
+                  2. Send a clear photo of the gift card (front and back) or the card details<br>
+                  3. We'll verify the card and confirm your payment amount<br>
+                  4. Once confirmed, we'll process payment directly to your bank account
+                  <br><br>
+                  The entire process typically takes less than 5 minutes.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Why do gift card rates vary?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Gift card rates vary based on several factors: the type of card, the country
+                  it was purchased in, the denomination, and current market demand. For example,
+                  a $100 Amazon US card may have a different rate than a $100 Amazon UK card.
+                  Always confirm the specific rate for your exact card before proceeding.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Do you accept partially used gift cards?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes, we accept partially used gift cards. The payment you receive will be
+                  based on the remaining balance on the card. When you send us the card details,
+                  we will verify the balance and quote you the appropriate amount based on
+                  the current rate for that card type.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">What if my gift card is rejected?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  If a gift card cannot be verified or is invalid, we will notify you immediately
+                  via WhatsApp and explain the reason. Common reasons include: the card has
+                  already been used, the card is from an unsupported region, or the card details
+                  provided were incorrect. We will never charge you for rejected cards.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── CRYPTOCURRENCY ──────────────────────────── -->
+        <div class="faq-group-section" id="faq-crypto">
+          <div class="faq-group-title">Cryptocurrency</div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Which cryptocurrencies do you support?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We currently support Bitcoin (BTC), Ethereum (ETH), Tether (USDT),
+                  BNB (BNB), USD Coin (USDC), Solana (SOL), TRON (TRX), and Litecoin (LTC).
+                  We are continuously adding support for more cryptocurrencies based on
+                  customer demand. Contact us if you'd like to trade a coin not listed here.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">How do crypto exchange rates work?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Our crypto rates are calculated using the current USD market price of
+                  each coin multiplied by the prevailing USD/NGN exchange rate. These rates
+                  are updated every hour to reflect market movements. When you initiate a
+                  trade, we lock in the rate quoted to you — so even if the market moves
+                  slightly during the transaction, you receive the agreed amount.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Can I buy crypto from you?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes! In addition to selling your crypto for naira, you can also buy
+                  cryptocurrency from us using naira. Simply message us on WhatsApp with
+                  the coin you want to buy and the amount in naira or USD, and we'll provide
+                  you with a wallet address and confirm the amount of crypto you'll receive.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">What is the minimum trade amount?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  For cryptocurrency, the minimum trade is the equivalent of $10 USD.
+                  For gift cards, the minimum is $10 USD denomination. There is no maximum
+                  trade limit — we handle large volume trades regularly. For very large
+                  trades, we recommend contacting us in advance so we can prepare accordingly.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── PAYMENTS ────────────────────────────────── -->
+        <div class="faq-group-section" id="faq-payments">
+          <div class="faq-group-title">Payments</div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">How quickly will I receive my payment?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  In most cases, payment is made within 2–5 minutes of us receiving and
+                  verifying your assets. During peak trading hours, it may occasionally take
+                  up to 10 minutes. We always aim for the fastest possible payout and will
+                  notify you on WhatsApp as soon as your payment has been sent.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Which banks do you support?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We support all major Nigerian commercial banks including GTBank, Access Bank,
+                  First Bank, Zenith Bank, UBA, Fidelity Bank, FCMB, Sterling Bank, Stanbic IBTC,
+                  Wema Bank, Kuda, OPay, and all other licensed Nigerian banks. Payment is made
+                  directly via bank transfer to any account number you provide.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Are there any fees or deductions?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  There are no hidden fees or unexpected deductions. The naira amount
+                  confirmed to you on WhatsApp is exactly what you will receive in your
+                  bank account. Our margin is built into the exchange rate we offer —
+                  what you see is what you get, always.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">What if I don't receive my payment?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  If you haven't received payment within 15 minutes of completing your trade,
+                  please send us a message on WhatsApp immediately. We will investigate and
+                  resolve the issue promptly. In rare cases, bank network delays may cause
+                  short delays. All payments are tracked and we will always ensure you receive
+                  your full amount.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- ── SECURITY ────────────────────────────────── -->
+        <div class="faq-group-section" id="faq-security">
+          <div class="faq-group-title">Security</div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Is OfficialValue Exchange safe to use?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes. OfficialValue Exchange has been operating for over 4 years with a
+                  4.9-star rating and over 500,000 completed trades. We take security and
+                  trust extremely seriously. Every transaction is personally monitored by
+                  our team. We have never failed to pay a verified trade and we never will.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">How do I know I won't be scammed?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Our reputation is built on trust. Here's how we protect you:
+                  <br><br>
+                  • We never ask you to pay us before we verify your assets<br>
+                  • For gift cards, we verify the card before you release it<br>
+                  • You can read hundreds of verified reviews on our social media<br>
+                  • Our WhatsApp number (+234 701 910 8587) is our only official contact<br>
+                  • We have 50,000+ satisfied customers who trade with us repeatedly
+                  <br><br>
+                  Always verify you're messaging our official number before trading.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">How do I verify OfficialValue Exchange is legitimate?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  You can verify us through multiple channels:
+                  <br><br>
+                  • Check our reviews on Instagram: <strong>officialvaluexchange</strong><br>
+                  • Follow us on Twitter/X: <strong>officialvaluex</strong><br>
+                  • Ask in Nigerian trading communities — our reputation speaks for itself<br>
+                  • Our official WhatsApp: <strong>+234 701 910 8587</strong><br>
+                  • This official website: <strong>officialvalueexchange.com</strong>
+                  <br><br>
+                  Beware of impersonators. Always double-check you have our official contact details.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span class="faq-question-text">Is my personal information safe?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We only collect the information needed to process your trade — your bank
+                  account details and the asset you're trading. We never share or sell your
+                  personal information to any third party. Your data is used solely for
+                  processing your transactions and providing support.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /faq-main -->
+    </div><!-- /faq-layout -->
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     3. STILL HAVE QUESTIONS
+═══════════════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="cta-content">
+    <div class="eyebrow" style="justify-content:center;">Still Have Questions?</div>
+    <h2 class="cta-h2">
+      We're Here <span class="text-gradient">24/7</span>
+    </h2>
+    <p class="cta-sub">
+      Can't find the answer you're looking for? Our team is always available
+      on WhatsApp to answer any question and help you complete your trade.
+    </p>
+    <div class="cta-actions">
+      <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20have%20a%20question%20about%20OfficialValue%20Exchange"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-whatsapp btn-xl">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Ask on WhatsApp
+      </a>
+      <button class="btn btn-ghost btn-xl" onclick="showPage('contact')">
+        Contact Page
+      </button>
+    </div>
+    <p class="cta-note">Average response time: under 2 minutes &middot; Available 24/7</p>
+  </div>
+</section>
+
+
+<!-- FAQ filter + accordion logic -->
+<script>
+(function () {
+
+  /* ── filterFaq ──────────────────────────────────────────────
+     Called by both sidebar buttons and mobile pill tabs.
+     filter: 'all' | 'faq-general' | 'faq-giftcards' | etc.
+  ────────────────────────────────────────────────────────── */
+  window.filterFaq = function (clickedBtn, filter) {
+
+    /* 1. Update ALL matching buttons (sidebar + mobile tabs) */
+    document.querySelectorAll('.faq-cat-btn, .faq-filter-tab').forEach(function (btn) {
+      var isSame = btn.dataset.filter === filter;
+      btn.classList.toggle('active', isSame);
+    });
+
+    /* 2. Show / hide group sections */
+    document.querySelectorAll('.faq-group-section').forEach(function (section) {
+      if (filter === 'all') {
+        section.classList.remove('faq-hidden');
+      } else {
+        var match = section.id === filter;
+        section.classList.toggle('faq-hidden', !match);
+      }
+    });
+
+    /* 3. Close all open accordions when switching category */
+    document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(function (btn) {
+      var answer = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.closest('.faq-item').classList.remove('open');
+      if (answer) answer.style.maxHeight = null;
+    });
+
+    /* 4. On mobile: scroll to top of faq-main */
+    var main = document.querySelector('.faq-main');
+    if (main && window.innerWidth <= 600) {
+      var offset = 80;
+      var top = main.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
+    /* 5. On desktop: scroll to the matching group (if not 'all') */
+    if (filter !== 'all' && window.innerWidth > 600) {
+      var target = document.getElementById(filter);
+      if (target) {
+        var offset = 96;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }
+  };
+
+})();
+</script>

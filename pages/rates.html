@@ -1,0 +1,439 @@
+<!-- ═══════════════════════════════════════════════════════════
+     RATES PAGE — pages/rates.html
+     Injected into #pageContent by main.js
+     ─────────────────────────────────────────────────────────
+     Sections:
+     1. Page header
+     2. Crypto rate cards (live)
+     3. Gift card rates table
+     4. Info strip
+     5. CTA
+═══════════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     1. PAGE HEADER
+═══════════════════════════════════════════════════════ -->
+<section class="section-void" style="padding-bottom:0;">
+  <div class="section-inner">
+
+    <div class="section-header" style="margin-bottom:0;padding-bottom:48px;">
+      <div class="eyebrow">Live Rates</div>
+      <h1 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:14px;">
+        Today's Exchange Rates
+      </h1>
+      <p style="max-width:520px;margin:0 auto;font-size:16px;">
+        All rates updated in real time. The rate you see is the rate you get —
+        no hidden fees, no surprises.
+      </p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;
+                  margin-top:16px;font-family:var(--font-mono);font-size:11px;
+                  color:var(--text-muted);">
+        <span class="live-dot" style="width:7px;height:7px;" aria-hidden="true"></span>
+        Prices update automatically every 60 seconds
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     2. CRYPTO RATE CARDS
+═══════════════════════════════════════════════════════ -->
+<section class="section-void" style="padding-top:32px;">
+  <div class="section-inner">
+
+    <div class="section-row-header">
+      <div class="eyebrow" style="margin-bottom:0;">Cryptocurrency</div>
+      <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade%20crypto"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-primary btn-sm">
+        Trade Crypto &rarr;
+      </a>
+    </div>
+
+    <div class="crypto-rates-grid">
+
+      <!-- Bitcoin -->
+      <div class="crypto-rate-card" data-coin="bitcoin">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon coin-btc" style="width:44px;height:44px;font-size:18px;margin-bottom:10px;">₿</div>
+            <div class="crypto-card-name">Bitcoin</div>
+            <div class="crypto-card-ticker">BTC</div>
+          </div>
+          <div class="crypto-card-change up">+2.3%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;94,820,000</div>
+          <div class="crypto-card-price-usd">$59,822 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+Bitcoin"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+Bitcoin"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- Ethereum -->
+      <div class="crypto-rate-card" data-coin="ethereum">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon coin-eth" style="width:44px;height:44px;font-size:18px;margin-bottom:10px;">Ξ</div>
+            <div class="crypto-card-name">Ethereum</div>
+            <div class="crypto-card-ticker">ETH</div>
+          </div>
+          <div class="crypto-card-change up">+1.8%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;4,512,000</div>
+          <div class="crypto-card-price-usd">$2,847 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+Ethereum"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+Ethereum"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- USDT -->
+      <div class="crypto-rate-card" data-coin="tether">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon coin-usdt" style="width:44px;height:44px;font-size:14px;margin-bottom:10px;">₮</div>
+            <div class="crypto-card-name">Tether</div>
+            <div class="crypto-card-ticker">USDT</div>
+          </div>
+          <div class="crypto-card-change up">+0.1%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;1,585</div>
+          <div class="crypto-card-price-usd">$1.00 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+USDT"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+USDT"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- BNB -->
+      <div class="crypto-rate-card" data-coin="binancecoin">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon coin-bnb" style="width:44px;height:44px;font-size:16px;margin-bottom:10px;">B</div>
+            <div class="crypto-card-name">BNB</div>
+            <div class="crypto-card-ticker">BNB</div>
+          </div>
+          <div class="crypto-card-change up">+3.1%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;890,000</div>
+          <div class="crypto-card-price-usd">$561 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+BNB"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+BNB"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- USDC -->
+      <div class="crypto-rate-card" data-coin="usd-coin">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon coin-usdc" style="width:44px;height:44px;font-size:14px;margin-bottom:10px;">$</div>
+            <div class="crypto-card-name">USD Coin</div>
+            <div class="crypto-card-ticker">USDC</div>
+          </div>
+          <div class="crypto-card-change up">+0.05%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;1,582</div>
+          <div class="crypto-card-price-usd">$1.00 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+USDC"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+USDC"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- Solana -->
+      <div class="crypto-rate-card">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon" style="width:44px;height:44px;font-size:13px;
+                 background:rgba(153,69,255,0.15);color:#9945ff;margin-bottom:10px;">SOL</div>
+            <div class="crypto-card-name">Solana</div>
+            <div class="crypto-card-ticker">SOL</div>
+          </div>
+          <div class="crypto-card-change up">+4.2%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;222,000</div>
+          <div class="crypto-card-price-usd">~$140 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+Solana"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+Solana"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- TRON -->
+      <div class="crypto-rate-card">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon" style="width:44px;height:44px;font-size:13px;
+                 background:rgba(255,6,10,0.12);color:#ff060a;margin-bottom:10px;">TRX</div>
+            <div class="crypto-card-name">TRON</div>
+            <div class="crypto-card-ticker">TRX</div>
+          </div>
+          <div class="crypto-card-change up">+1.1%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;183</div>
+          <div class="crypto-card-price-usd">~$0.115 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+TRON"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+TRON"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+      <!-- Litecoin -->
+      <div class="crypto-rate-card">
+        <div class="crypto-card-header">
+          <div class="crypto-card-meta">
+            <div class="coin-icon" style="width:44px;height:44px;font-size:14px;
+                 background:rgba(191,191,191,0.12);color:#bfbfbf;margin-bottom:10px;">LTC</div>
+            <div class="crypto-card-name">Litecoin</div>
+            <div class="crypto-card-ticker">LTC</div>
+          </div>
+          <div class="crypto-card-change down">-0.6%</div>
+        </div>
+        <div>
+          <div class="crypto-card-price-ngn">&#8358;128,000</div>
+          <div class="crypto-card-price-usd">~$80 USD</div>
+        </div>
+        <div class="crypto-card-footer">
+          <a href="https://wa.me/2347019108587?text=I+want+to+buy+Litecoin"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-primary">Buy</a>
+          <a href="https://wa.me/2347019108587?text=I+want+to+sell+Litecoin"
+             target="_blank" rel="noopener noreferrer"
+             class="crypto-card-btn crypto-card-btn-ghost">Sell</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     3. GIFT CARD RATES TABLE
+═══════════════════════════════════════════════════════ -->
+<section class="section-deep">
+  <div class="section-inner">
+
+    <div class="section-row-header">
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px;">Gift Cards</div>
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);">Gift Card Buy Rates</h2>
+      </div>
+      <a href="https://wa.me/2347019108587?text=Hello%2C%20I+want+to+sell+a+gift+card"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-primary">
+        Sell Your Gift Card &rarr;
+      </a>
+    </div>
+
+    <div class="gc-table-wrap">
+      <table class="gc-rates-table">
+        <thead>
+          <tr>
+            <th>Gift Card</th>
+            <th>Our Rate</th>
+            <th class="gc-col-status">Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="gcRatesBody">
+          <!-- Populated by admin.js populateRatesTable() -->
+          <!-- Fallback rows shown if JS is slow -->
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#ff9900;">A</div><strong style="color:var(--text-primary);font-size:14px;">Amazon</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,450 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Amazon+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#555;">A</div><strong style="color:var(--text-primary);font-size:14px;">Apple</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,420 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Apple+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#4285f4;">G</div><strong style="color:var(--text-primary);font-size:14px;">Google Play</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,400 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Google+Play+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#1b2838;">S</div><strong style="color:var(--text-primary);font-size:14px;">Steam</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,380 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Steam+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#e50914;">N</div><strong style="color:var(--text-primary);font-size:14px;">Netflix</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,350 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Netflix+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#fc3c44;">i</div><strong style="color:var(--text-primary);font-size:14px;">iTunes</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,400 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+iTunes+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#e53238;">e</div><strong style="color:var(--text-primary);font-size:14px;">eBay</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,380 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+eBay+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#0071ce;">W</div><strong style="color:var(--text-primary);font-size:14px;">Walmart</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,360 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Walmart+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#107c10;">X</div><strong style="color:var(--text-primary);font-size:14px;">Xbox</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,390 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Xbox+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+          <tr>
+            <td><div class="gc-name-cell"><div class="gc-table-icon" style="background:#007bc1;">A</div><strong style="color:var(--text-primary);font-size:14px;">Amex</strong></div></td>
+            <td class="gc-rate-cell">&#8358;1,420 / per $1</td>
+            <td class="gc-col-status"><span class="gc-status-badge"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;"></span> Active</span></td>
+            <td><a href="https://wa.me/2347019108587?text=I+want+to+sell+my+Amex+gift+card" target="_blank" rel="noopener noreferrer" class="crypto-card-btn crypto-card-btn-primary" style="font-size:11px;padding:6px 14px;border-radius:8px;text-decoration:none;display:inline-flex;white-space:nowrap;">Sell Now</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     4. INFO STRIP
+═══════════════════════════════════════════════════════ -->
+<section class="section-void">
+  <div class="section-inner">
+
+    <div class="rates-info-strip">
+
+      <div class="rates-info-card">
+        <div class="rates-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="rates-info-text">
+          <h4>Rates Updated Every Hour</h4>
+          <p>We monitor the market constantly and update our rates to ensure you always get the best value for your assets.</p>
+        </div>
+      </div>
+
+      <div class="rates-info-card">
+        <div class="rates-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="rates-info-text">
+          <h4>Rate Lock Guarantee</h4>
+          <p>Once we confirm your rate on WhatsApp, it's locked in for your transaction. No last-minute changes or hidden deductions.</p>
+        </div>
+      </div>
+
+      <div class="rates-info-card">
+        <div class="rates-info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="rates-info-text">
+          <h4>Instant Bank Transfer</h4>
+          <p>Payment goes directly to your Nigerian bank account within minutes. All major banks supported — no third-party delays.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     5. CTA
+═══════════════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="cta-content">
+    <div class="eyebrow" style="justify-content:center;">Ready?</div>
+    <h2 class="cta-h2">
+      Start Your Trade <span class="text-gradient">Right Now</span>
+    </h2>
+    <p class="cta-sub">
+      Send us a message on WhatsApp with what you want to trade.
+      We'll confirm your rate instantly and process your payment in minutes.
+    </p>
+    <div class="cta-actions">
+      <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade%20on%20OfficialValue%20Exchange"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-whatsapp btn-xl">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Trade on WhatsApp
+      </a>
+      <button class="btn btn-ghost btn-xl" onclick="showPage('faq')">
+        How It Works
+      </button>
+    </div>
+    <p class="cta-note">No registration &middot; Rate locked on confirmation &middot; Paid in minutes</p>
+  </div>
+</section>

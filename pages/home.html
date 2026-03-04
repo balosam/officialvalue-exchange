@@ -1,0 +1,767 @@
+<!-- ═══════════════════════════════════════════════════════════
+     HOME PAGE — pages/home.html
+     Injected into #pageContent by main.js
+     ─────────────────────────────────────────────────────────
+     Sections:
+     1. Hero
+     2. Trust bar
+     3. Why Choose Us (6 cards)
+     4. How It Works (3 steps)
+     5. Supported Assets (tabs)
+     6. Photo section
+     7. Reviews (3 cards)
+     8. CTA
+═══════════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     1. HERO
+═══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+
+    <!-- Left: copy -->
+    <div class="hero-content">
+
+      <div class="hero-badge">
+        <span class="live-dot" aria-hidden="true"></span>
+        Nigeria's #1 Crypto &amp; Gift Card Exchange
+      </div>
+
+      <h1 class="hero-h1">
+        <span class="line-plain">Trade Crypto &amp;</span>
+        <span class="line-gold">Gift Cards Fast.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Buy and sell Bitcoin, USDT, Ethereum and all major gift cards
+        at the best rates in Nigeria. Instant payouts, zero stress, 24/7.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade%20on%20OfficialValue%20Exchange"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-whatsapp btn-xl">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Start Trading on WhatsApp
+        </a>
+        <button class="btn btn-ghost btn-xl" onclick="showPage('rates')">
+          View Live Rates &rarr;
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="500" data-suffix="K+">500K+</span>
+          <span class="hero-stat-label">Trades<br>Completed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="50" data-suffix="K+">50K+</span>
+          <span class="hero-stat-label">Happy<br>Customers</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="40" data-suffix="+">40+</span>
+          <span class="hero-stat-label">Gift Cards<br>Supported</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="4.9" data-suffix="★" data-decimal="true">4.9★</span>
+          <span class="hero-stat-label">Customer<br>Rating</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: rate widget -->
+    <div class="hero-right">
+
+      <!-- Floating badge top -->
+      <div class="widget-float-badge fb-top" aria-hidden="true">
+        <div class="fb-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div class="fb-title">Instant Payout</div>
+          <div class="fb-sub">Within 5 minutes</div>
+        </div>
+      </div>
+
+      <!-- Rate widget -->
+      <div class="rate-widget" id="rateWidget">
+        <div class="widget-header">
+          <span class="widget-title">Live Exchange Rates</span>
+          <span class="widget-live">
+            <span class="live-dot" style="width:6px;height:6px;" aria-hidden="true"></span>
+            LIVE
+          </span>
+        </div>
+
+        <div class="rate-row" data-coin="bitcoin">
+          <div class="rate-asset-info">
+            <div class="coin-icon coin-btc">₿</div>
+            <div>
+              <div class="rate-asset-name">Bitcoin</div>
+              <div class="rate-asset-ticker">BTC</div>
+            </div>
+          </div>
+          <div class="rate-price-col">
+            <div class="rate-price-ngn">&#8358;94,820,000</div>
+            <div class="rate-price-usd">$59,822</div>
+            <div class="rate-change up">▲ 2.3%</div>
+          </div>
+        </div>
+
+        <div class="rate-row" data-coin="ethereum">
+          <div class="rate-asset-info">
+            <div class="coin-icon coin-eth">Ξ</div>
+            <div>
+              <div class="rate-asset-name">Ethereum</div>
+              <div class="rate-asset-ticker">ETH</div>
+            </div>
+          </div>
+          <div class="rate-price-col">
+            <div class="rate-price-ngn">&#8358;4,512,000</div>
+            <div class="rate-price-usd">$2,847</div>
+            <div class="rate-change up">▲ 1.8%</div>
+          </div>
+        </div>
+
+        <div class="rate-row" data-coin="tether">
+          <div class="rate-asset-info">
+            <div class="coin-icon coin-usdt">₮</div>
+            <div>
+              <div class="rate-asset-name">Tether</div>
+              <div class="rate-asset-ticker">USDT</div>
+            </div>
+          </div>
+          <div class="rate-price-col">
+            <div class="rate-price-ngn">&#8358;1,585</div>
+            <div class="rate-price-usd">$1.00</div>
+            <div class="rate-change up">▲ 0.1%</div>
+          </div>
+        </div>
+
+        <div class="rate-row" data-coin="binancecoin">
+          <div class="rate-asset-info">
+            <div class="coin-icon coin-bnb">B</div>
+            <div>
+              <div class="rate-asset-name">BNB</div>
+              <div class="rate-asset-ticker">BNB</div>
+            </div>
+          </div>
+          <div class="rate-price-col">
+            <div class="rate-price-ngn">&#8358;890,000</div>
+            <div class="rate-price-usd">$561</div>
+            <div class="rate-change up">▲ 3.1%</div>
+          </div>
+        </div>
+
+        <div class="widget-footer">
+          <button class="widget-btn widget-btn-primary" onclick="showPage('contact')">
+            Buy / Sell
+          </button>
+          <button class="widget-btn widget-btn-secondary" onclick="showPage('rates')">
+            All Rates
+          </button>
+        </div>
+      </div>
+
+      <!-- Floating badge bottom -->
+      <div class="widget-float-badge fb-bottom" aria-hidden="true">
+        <div class="fb-icon-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="fb-title">100% Secure</div>
+          <div class="fb-sub">Verified &amp; trusted</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     2. TRUST BAR
+═══════════════════════════════════════════════════════ -->
+<div class="trust-bar" role="list" aria-label="Trust indicators">
+  <div class="trust-item" role="listitem">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Secure &amp; Verified
+  </div>
+  <div class="trust-item" role="listitem">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Instant Payouts
+  </div>
+  <div class="trust-item" role="listitem">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    50,000+ Customers
+  </div>
+  <div class="trust-item" role="listitem">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    4.9★ Rating
+  </div>
+  <div class="trust-item" role="listitem">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    24/7 Support
+  </div>
+  <div class="trust-item" role="listitem">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    Best Market Rates
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     3. WHY CHOOSE US
+═══════════════════════════════════════════════════════ -->
+<section class="section-deep">
+  <div class="section-inner">
+    <div class="section-glow-top" aria-hidden="true"></div>
+
+    <div class="section-header">
+      <div class="eyebrow">Why Choose Us</div>
+      <h2>Built for Nigerian Traders</h2>
+      <p>Everything you need to trade crypto and gift cards safely, quickly, and at the best rates available.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feat-card card-shimmer">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Instant Payouts</h3>
+        <p>Receive your funds within minutes of completing your trade. No waiting, no unnecessary delays — just fast, reliable transfers.</p>
+      </div>
+
+      <div class="feat-card card-shimmer">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3>Best Market Rates</h3>
+        <p>We monitor the market 24/7 to offer you the most competitive exchange rates in Nigeria. More naira for your assets, every time.</p>
+      </div>
+
+      <div class="feat-card card-shimmer">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>100% Secure</h3>
+        <p>Every transaction is verified and monitored. Your funds and information are always protected with industry-standard security practices.</p>
+      </div>
+
+      <div class="feat-card card-shimmer">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <h3>24/7 Expert Support</h3>
+        <p>Our dedicated team is available around the clock on WhatsApp. Real humans, real help — whenever you need it, day or night.</p>
+      </div>
+
+      <div class="feat-card card-shimmer">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          </svg>
+        </div>
+        <h3>40+ Gift Cards</h3>
+        <p>From Amazon to Xbox, iTunes to Steam — we accept all major gift cards. If you have it, we'll buy it at a great rate.</p>
+      </div>
+
+      <div class="feat-card card-shimmer">
+        <div class="feat-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>50,000+ Happy Traders</h3>
+        <p>Join a growing community of satisfied Nigerian traders who trust OfficialValue Exchange for all their crypto and gift card needs.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     3b. BRAND PROMISE
+═══════════════════════════════════════════════════════ -->
+<section class="section-void">
+  <div class="section-inner">
+
+    <div class="section-header">
+      <div class="eyebrow">Our Promise</div>
+      <h2>What You Can Always Count On</h2>
+      <p>Every trade you make with OfficialValue Exchange comes with these guarantees — no exceptions.</p>
+    </div>
+
+    <div class="promise-grid">
+
+      <div class="promise-card">
+        <span class="promise-num">01 / SPEED</span>
+        <h3>Paid Within Minutes</h3>
+        <p>We don't make you wait. From the moment your assets are confirmed, payment hits your bank account typically within 2–5 minutes. Our record is under 60 seconds.</p>
+      </div>
+
+      <div class="promise-card">
+        <span class="promise-num">02 / RATES</span>
+        <h3>Rate Locked on Confirmation</h3>
+        <p>The naira amount we quote you on WhatsApp is exactly what you receive. No market slippage deductions, no last-minute changes, no hidden charges — ever.</p>
+      </div>
+
+      <div class="promise-card">
+        <span class="promise-num">03 / TRUST</span>
+        <h3>Zero Failed Payments</h3>
+        <p>In over 4 years and 500,000+ trades, we have never failed to pay a verified transaction. Your trade will always be honoured — that is our iron-clad commitment.</p>
+      </div>
+
+      <div class="promise-card">
+        <span class="promise-num">04 / SUPPORT</span>
+        <h3>Real People, Always On</h3>
+        <p>Our support team operates 24 hours a day, 7 days a week including every public holiday. You will always reach a human being who knows exactly how to help you.</p>
+      </div>
+
+      <div class="promise-card">
+        <span class="promise-num">05 / PRIVACY</span>
+        <h3>Your Data Stays Private</h3>
+        <p>We only collect what's needed to process your trade. Your bank details, personal information, and trade history are never shared with any third party — period.</p>
+      </div>
+
+      <div class="promise-card">
+        <span class="promise-num">06 / GROWTH</span>
+        <h3>Always Getting Better</h3>
+        <p>We actively improve our rates, processes, and supported assets based on customer feedback. When you trade with us, you're part of something that grows with you.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     3c. LIVE TRADE FEED
+═══════════════════════════════════════════════════════ -->
+<div class="trade-feed" aria-label="Recent trade activity">
+  <div class="trade-feed-inner">
+    <div class="trade-feed-header">
+      <span class="live-dot" aria-hidden="true"></span>
+      <h3>Recent Trades</h3>
+    </div>
+    <div class="trade-feed-wrap">
+      <div class="trade-feed-track">
+        <!-- Set 1 -->
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Emeka</span><span class="trade-pill-action">sold Amazon GC</span><span class="trade-pill-time">2 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Ngozi</span><span class="trade-pill-action">sold USDT</span><span class="trade-pill-time">4 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Tunde</span><span class="trade-pill-action">bought Bitcoin</span><span class="trade-pill-time">5 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Amaka</span><span class="trade-pill-action">sold Apple GC</span><span class="trade-pill-time">7 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Kemi</span><span class="trade-pill-action">sold Steam GC</span><span class="trade-pill-time">9 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Chidi</span><span class="trade-pill-action">sold Ethereum</span><span class="trade-pill-time">11 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Fatima</span><span class="trade-pill-action">sold iTunes GC</span><span class="trade-pill-time">13 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Yusuf</span><span class="trade-pill-action">bought USDT</span><span class="trade-pill-time">15 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Ifeoma</span><span class="trade-pill-action">sold Netflix GC</span><span class="trade-pill-time">17 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Bayo</span><span class="trade-pill-action">sold BNB</span><span class="trade-pill-time">20 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Chioma</span><span class="trade-pill-action">sold Google Play GC</span><span class="trade-pill-time">22 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Rasheed</span><span class="trade-pill-action">bought Ethereum</span><span class="trade-pill-time">24 min ago</span></div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Emeka</span><span class="trade-pill-action">sold Amazon GC</span><span class="trade-pill-time">2 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Ngozi</span><span class="trade-pill-action">sold USDT</span><span class="trade-pill-time">4 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Tunde</span><span class="trade-pill-action">bought Bitcoin</span><span class="trade-pill-time">5 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Amaka</span><span class="trade-pill-action">sold Apple GC</span><span class="trade-pill-time">7 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Kemi</span><span class="trade-pill-action">sold Steam GC</span><span class="trade-pill-time">9 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Chidi</span><span class="trade-pill-action">sold Ethereum</span><span class="trade-pill-time">11 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Fatima</span><span class="trade-pill-action">sold iTunes GC</span><span class="trade-pill-time">13 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Yusuf</span><span class="trade-pill-action">bought USDT</span><span class="trade-pill-time">15 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Ifeoma</span><span class="trade-pill-action">sold Netflix GC</span><span class="trade-pill-time">17 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Bayo</span><span class="trade-pill-action">sold BNB</span><span class="trade-pill-time">20 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Chioma</span><span class="trade-pill-action">sold Google Play GC</span><span class="trade-pill-time">22 min ago</span></div>
+        <div class="trade-pill"><span class="trade-pill-dot"></span><span class="trade-pill-name">Rasheed</span><span class="trade-pill-action">bought Ethereum</span><span class="trade-pill-time">24 min ago</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     4. HOW IT WORKS
+═══════════════════════════════════════════════════════ -->
+<section class="section-void">
+  <div class="section-inner">
+
+    <div class="section-header">
+      <div class="eyebrow">The Process</div>
+      <h2>Trade in 3 Simple Steps</h2>
+      <p>Getting paid for your crypto or gift cards has never been easier. Here's how it works.</p>
+    </div>
+
+    <div class="steps-wrap">
+      <div class="steps-connector" aria-hidden="true"></div>
+
+      <div class="step-item">
+        <div class="step-num-outer">
+          <div class="step-num-ring" aria-hidden="true"></div>
+          <div class="step-num-circle">
+            <span class="num">01</span>
+          </div>
+          <div class="step-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3>Contact Us on WhatsApp</h3>
+          <p>Send us a message on WhatsApp with what you want to trade — crypto or gift cards. Tell us the type and amount.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num-outer">
+          <div class="step-num-ring" aria-hidden="true"></div>
+          <div class="step-num-circle">
+            <span class="num">02</span>
+          </div>
+          <div class="step-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3>Get a Confirmed Rate</h3>
+          <p>We'll confirm the current rate for your trade instantly. No hidden fees, no surprises — the rate we quote is the rate you get.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num-outer">
+          <div class="step-num-ring" aria-hidden="true"></div>
+          <div class="step-num-circle">
+            <span class="num">03</span>
+          </div>
+          <div class="step-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3>Receive Your Payment</h3>
+          <p>Send your assets and get paid directly to your bank account within minutes. Fast, safe, and completely hassle-free.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade%20on%20OfficialValue%20Exchange"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-primary btn-xl">
+        Start Trading Now &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     5. SUPPORTED ASSETS
+═══════════════════════════════════════════════════════ -->
+<section class="section-deep">
+  <div class="section-inner">
+    <div class="section-glow-bottom" aria-hidden="true"></div>
+
+    <div class="section-header">
+      <div class="eyebrow">Supported Assets</div>
+      <h2>Crypto &amp; Gift Cards We Accept</h2>
+      <p>Trade all major cryptocurrencies and gift cards. More assets added regularly based on demand.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="assets-tabs" role="tablist" aria-label="Asset type">
+      <button class="tab-btn active" role="tab" aria-selected="true"
+              onclick="switchTab(this,'crypto')">
+        Cryptocurrency
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false"
+              onclick="switchTab(this,'giftcard')">
+        Gift Cards
+      </button>
+    </div>
+
+    <!-- Crypto grid -->
+    <div class="assets-grid" id="tab-crypto" role="tabpanel">
+
+      <div class="asset-pill">
+        <div class="coin-icon coin-btc" style="width:44px;height:44px;font-size:18px;">₿</div>
+        <div class="asset-pill-name">Bitcoin</div>
+        <div class="asset-pill-rate" data-ticker-pill="bitcoin">BTC</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="coin-icon coin-eth" style="width:44px;height:44px;font-size:18px;">Ξ</div>
+        <div class="asset-pill-name">Ethereum</div>
+        <div class="asset-pill-rate" data-ticker-pill="ethereum">ETH</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="coin-icon coin-usdt" style="width:44px;height:44px;font-size:14px;">₮</div>
+        <div class="asset-pill-name">Tether</div>
+        <div class="asset-pill-rate" data-ticker-pill="tether">USDT</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="coin-icon coin-bnb" style="width:44px;height:44px;font-size:16px;">B</div>
+        <div class="asset-pill-name">BNB</div>
+        <div class="asset-pill-rate" data-ticker-pill="binancecoin">BNB</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="coin-icon coin-usdc" style="width:44px;height:44px;font-size:12px;">$</div>
+        <div class="asset-pill-name">USD Coin</div>
+        <div class="asset-pill-rate" data-ticker-pill="usd-coin">USDC</div>
+      </div>
+
+    </div>
+
+    <!-- Gift card grid -->
+    <div class="assets-grid" id="tab-giftcard" role="tabpanel" style="display:none;">
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-amazon" style="width:44px;height:44px;">AMZ</div>
+        <div class="asset-pill-name">Amazon</div>
+        <div class="asset-pill-rate" data-gc-rate="amazon">&#8358;1,450/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-apple" style="width:44px;height:44px;">APL</div>
+        <div class="asset-pill-name">Apple</div>
+        <div class="asset-pill-rate" data-gc-rate="apple">&#8358;1,420/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-google" style="width:44px;height:44px;">GGL</div>
+        <div class="asset-pill-name">Google Play</div>
+        <div class="asset-pill-rate" data-gc-rate="google">&#8358;1,400/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-steam" style="width:44px;height:44px;">STM</div>
+        <div class="asset-pill-name">Steam</div>
+        <div class="asset-pill-rate" data-gc-rate="steam">&#8358;1,380/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-netflix" style="width:44px;height:44px;">NFX</div>
+        <div class="asset-pill-name">Netflix</div>
+        <div class="asset-pill-rate" data-gc-rate="netflix">&#8358;1,350/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-itunes" style="width:44px;height:44px;">ITN</div>
+        <div class="asset-pill-name">iTunes</div>
+        <div class="asset-pill-rate" data-gc-rate="itunes">&#8358;1,400/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-ebay" style="width:44px;height:44px;">EBY</div>
+        <div class="asset-pill-name">eBay</div>
+        <div class="asset-pill-rate" data-gc-rate="ebay">&#8358;1,380/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-walmart" style="width:44px;height:44px;">WMT</div>
+        <div class="asset-pill-name">Walmart</div>
+        <div class="asset-pill-rate" data-gc-rate="walmart">&#8358;1,360/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-xbox" style="width:44px;height:44px;">XBX</div>
+        <div class="asset-pill-name">Xbox</div>
+        <div class="asset-pill-rate" data-gc-rate="xbox">&#8358;1,390/$1</div>
+      </div>
+
+      <div class="asset-pill">
+        <div class="gc-icon gc-amex" style="width:44px;height:44px;">AMX</div>
+        <div class="asset-pill-name">Amex</div>
+        <div class="asset-pill-rate" data-gc-rate="amex">&#8358;1,420/$1</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     6. PHOTO SECTION
+═══════════════════════════════════════════════════════ -->
+<div class="photo-section">
+  <div class="photo-section-img">
+    <img src="assets/images/Nigerian young man smartphone.jpg"
+         alt="Young Nigerian man trading on smartphone"
+         loading="lazy"/>
+  </div>
+  <div class="photo-section-content">
+    <div class="eyebrow">Trusted By Thousands</div>
+    <h2>Your Money. <span class="text-gradient">Your Control.</span></h2>
+    <p>
+      OfficialValue Exchange was built for Nigerians who want speed, transparency,
+      and the best possible value for their digital assets.
+    </p>
+    <div class="photo-bullets">
+      <div class="photo-bullet">
+        <span class="photo-bullet-dot" aria-hidden="true"></span>
+        Trades completed in under 5 minutes
+      </div>
+      <div class="photo-bullet">
+        <span class="photo-bullet-dot" aria-hidden="true"></span>
+        Direct bank transfer — no third parties
+      </div>
+      <div class="photo-bullet">
+        <span class="photo-bullet-dot" aria-hidden="true"></span>
+        Real-time rates updated every hour
+      </div>
+      <div class="photo-bullet">
+        <span class="photo-bullet-dot" aria-hidden="true"></span>
+        Over 500,000 successful transactions
+      </div>
+    </div>
+    <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade"
+       target="_blank" rel="noopener noreferrer"
+       class="btn btn-primary btn-lg">
+      Trade on WhatsApp &rarr;
+    </a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     7. REVIEWS
+═══════════════════════════════════════════════════════ -->
+<section class="section-void">
+  <div class="section-inner">
+
+    <div class="section-header">
+      <div class="eyebrow">Client Reviews</div>
+      <h2>What Our Traders Say</h2>
+      <p>Real feedback from real customers across Nigeria.</p>
+    </div>
+
+    <div class="t-grid">
+
+      <div class="t-card">
+        <div class="t-stars" aria-label="5 stars">★★★★★</div>
+        <p class="t-text">
+          "Fastest payout I've ever experienced. Sold my Amazon gift card and
+          received my money in less than 4 minutes. These guys are the real deal!"
+        </p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:rgba(251,191,36,0.15);color:var(--gold);">C</div>
+          <div>
+            <div class="t-name">Chukwuemeka O.</div>
+            <div class="t-location">Lagos, Nigeria</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars" aria-label="5 stars">★★★★★</div>
+        <p class="t-text">
+          "I've been trading USDT here for 6 months. The rates are consistently
+          better than anywhere else and the customer service on WhatsApp is incredible."
+        </p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:rgba(16,185,129,0.15);color:var(--green);">A</div>
+          <div>
+            <div class="t-name">Amaka I.</div>
+            <div class="t-location">Abuja, Nigeria</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars" aria-label="5 stars">★★★★★</div>
+        <p class="t-text">
+          "Very professional and trustworthy. I was nervous at first but they
+          walked me through everything. Now I trade here weekly without hesitation."
+        </p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:rgba(99,102,241,0.15);color:#818cf8;">B</div>
+          <div>
+            <div class="t-name">Babatunde F.</div>
+            <div class="t-location">Port Harcourt, Nigeria</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:36px;">
+      <button class="btn btn-ghost" onclick="showPage('testimonials')">
+        Read More Reviews &rarr;
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     8. CTA
+═══════════════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="cta-content">
+    <div class="eyebrow" style="justify-content:center;">Ready to Trade?</div>
+    <h2 class="cta-h2">
+      Get the <span class="text-gradient">Best Rates</span><br>in Nigeria Today
+    </h2>
+    <p class="cta-sub">
+      Join over 50,000 Nigerian traders who trust OfficialValue Exchange
+      for fast, secure, and profitable crypto and gift card trading.
+    </p>
+    <div class="cta-actions">
+      <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade%20on%20OfficialValue%20Exchange"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-whatsapp btn-xl">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
+      <button class="btn btn-ghost btn-xl" onclick="showPage('rates')">
+        View All Rates
+      </button>
+    </div>
+    <p class="cta-note">No registration required &middot; Instant response &middot; Available 24/7</p>
+  </div>
+</section>

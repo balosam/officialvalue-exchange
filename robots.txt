@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin page from indexing
+Disallow: /#admin
+
+# Sitemap location
+Sitemap: https://officialvalueexchange.com/sitemap.xml
