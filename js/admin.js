@@ -145,9 +145,9 @@
       row.innerHTML =
         '<td>' +
           '<div class="gc-name-cell">' +
-            '<div class="gc-table-icon gc-' + key + '" ' +
-              'style="background:' + (gcColors[key] || '#666') + ';">' +
-              r.name.charAt(0) +
+            '<div class="gc-table-icon gc-img-icon">' +
+              '<img src="assets/images/gc-' + key + '.png" alt="' + r.name + '" ' +
+              'onerror="this.parentElement.style.background=\'#444\';this.style.display=\'none\'">' +
             '</div>' +
             '<strong style="color:var(--text-primary);font-size:14px;">' +
               r.name +

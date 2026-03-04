@@ -493,132 +493,95 @@
 
 
 <!-- ═══════════════════════════════════════════════════════
-     5. SUPPORTED ASSETS
+     5. SUPPORTED ASSETS — scrolling marquee
 ═══════════════════════════════════════════════════════ -->
-<section class="section-deep">
-  <div class="section-inner">
-    <div class="section-glow-bottom" aria-hidden="true"></div>
+<section class="section-deep assets-marquee-section">
+  <div class="section-glow-bottom" aria-hidden="true"></div>
 
+  <div class="section-inner">
     <div class="section-header">
       <div class="eyebrow">Supported Assets</div>
       <h2>Crypto &amp; Gift Cards We Accept</h2>
       <p>Trade all major cryptocurrencies and gift cards. More assets added regularly based on demand.</p>
     </div>
-
-    <!-- Tabs -->
-    <div class="assets-tabs" role="tablist" aria-label="Asset type">
-      <button class="tab-btn active" role="tab" aria-selected="true"
-              onclick="switchTab(this,'crypto')">
-        Cryptocurrency
-      </button>
-      <button class="tab-btn" role="tab" aria-selected="false"
-              onclick="switchTab(this,'giftcard')">
-        Gift Cards
-      </button>
-    </div>
-
-    <!-- Crypto grid -->
-    <div class="assets-grid" id="tab-crypto" role="tabpanel">
-
-      <div class="asset-pill">
-        <div class="coin-icon coin-btc" style="width:44px;height:44px;font-size:18px;">₿</div>
-        <div class="asset-pill-name">Bitcoin</div>
-        <div class="asset-pill-rate" data-ticker-pill="bitcoin">BTC</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="coin-icon coin-eth" style="width:44px;height:44px;font-size:18px;">Ξ</div>
-        <div class="asset-pill-name">Ethereum</div>
-        <div class="asset-pill-rate" data-ticker-pill="ethereum">ETH</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="coin-icon coin-usdt" style="width:44px;height:44px;font-size:14px;">₮</div>
-        <div class="asset-pill-name">Tether</div>
-        <div class="asset-pill-rate" data-ticker-pill="tether">USDT</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="coin-icon coin-bnb" style="width:44px;height:44px;font-size:16px;">B</div>
-        <div class="asset-pill-name">BNB</div>
-        <div class="asset-pill-rate" data-ticker-pill="binancecoin">BNB</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="coin-icon coin-usdc" style="width:44px;height:44px;font-size:12px;">$</div>
-        <div class="asset-pill-name">USD Coin</div>
-        <div class="asset-pill-rate" data-ticker-pill="usd-coin">USDC</div>
-      </div>
-
-    </div>
-
-    <!-- Gift card grid -->
-    <div class="assets-grid" id="tab-giftcard" role="tabpanel" style="display:none;">
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-amazon" style="width:44px;height:44px;">AMZ</div>
-        <div class="asset-pill-name">Amazon</div>
-        <div class="asset-pill-rate" data-gc-rate="amazon">&#8358;1,450/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-apple" style="width:44px;height:44px;">APL</div>
-        <div class="asset-pill-name">Apple</div>
-        <div class="asset-pill-rate" data-gc-rate="apple">&#8358;1,420/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-google" style="width:44px;height:44px;">GGL</div>
-        <div class="asset-pill-name">Google Play</div>
-        <div class="asset-pill-rate" data-gc-rate="google">&#8358;1,400/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-steam" style="width:44px;height:44px;">STM</div>
-        <div class="asset-pill-name">Steam</div>
-        <div class="asset-pill-rate" data-gc-rate="steam">&#8358;1,380/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-netflix" style="width:44px;height:44px;">NFX</div>
-        <div class="asset-pill-name">Netflix</div>
-        <div class="asset-pill-rate" data-gc-rate="netflix">&#8358;1,350/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-itunes" style="width:44px;height:44px;">ITN</div>
-        <div class="asset-pill-name">iTunes</div>
-        <div class="asset-pill-rate" data-gc-rate="itunes">&#8358;1,400/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-ebay" style="width:44px;height:44px;">EBY</div>
-        <div class="asset-pill-name">eBay</div>
-        <div class="asset-pill-rate" data-gc-rate="ebay">&#8358;1,380/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-walmart" style="width:44px;height:44px;">WMT</div>
-        <div class="asset-pill-name">Walmart</div>
-        <div class="asset-pill-rate" data-gc-rate="walmart">&#8358;1,360/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-xbox" style="width:44px;height:44px;">XBX</div>
-        <div class="asset-pill-name">Xbox</div>
-        <div class="asset-pill-rate" data-gc-rate="xbox">&#8358;1,390/$1</div>
-      </div>
-
-      <div class="asset-pill">
-        <div class="gc-icon gc-amex" style="width:44px;height:44px;">AMX</div>
-        <div class="asset-pill-name">Amex</div>
-        <div class="asset-pill-rate" data-gc-rate="amex">&#8358;1,420/$1</div>
-      </div>
-
-    </div>
-
   </div>
+
+  <!-- Row 1 — Cryptocurrency (scrolls left) -->
+  <div class="assets-marquee-label">
+    <span class="assets-marquee-tag">Cryptocurrency</span>
+  </div>
+  <div class="assets-marquee-wrap">
+    <div class="assets-marquee-fade assets-marquee-fade-left" aria-hidden="true"></div>
+    <div class="assets-marquee-fade assets-marquee-fade-right" aria-hidden="true"></div>
+    <div class="assets-marquee-track assets-scroll-left">
+      <!-- Set 1 -->
+      <div class="asset-marquee-card"><div class="coin-icon coin-btc">₿</div><div class="asset-marquee-name">Bitcoin</div><div class="asset-marquee-ticker">BTC</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-eth">Ξ</div><div class="asset-marquee-name">Ethereum</div><div class="asset-marquee-ticker">ETH</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-usdt">₮</div><div class="asset-marquee-name">Tether</div><div class="asset-marquee-ticker">USDT</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-bnb">B</div><div class="asset-marquee-name">BNB</div><div class="asset-marquee-ticker">BNB</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-usdc">$</div><div class="asset-marquee-name">USD Coin</div><div class="asset-marquee-ticker">USDC</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-sol">◎</div><div class="asset-marquee-name">Solana</div><div class="asset-marquee-ticker">SOL</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-trx">T</div><div class="asset-marquee-name">TRON</div><div class="asset-marquee-ticker">TRX</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-ltc">Ł</div><div class="asset-marquee-name">Litecoin</div><div class="asset-marquee-ticker">LTC</div></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="asset-marquee-card"><div class="coin-icon coin-btc">₿</div><div class="asset-marquee-name">Bitcoin</div><div class="asset-marquee-ticker">BTC</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-eth">Ξ</div><div class="asset-marquee-name">Ethereum</div><div class="asset-marquee-ticker">ETH</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-usdt">₮</div><div class="asset-marquee-name">Tether</div><div class="asset-marquee-ticker">USDT</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-bnb">B</div><div class="asset-marquee-name">BNB</div><div class="asset-marquee-ticker">BNB</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-usdc">$</div><div class="asset-marquee-name">USD Coin</div><div class="asset-marquee-ticker">USDC</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-sol">◎</div><div class="asset-marquee-name">Solana</div><div class="asset-marquee-ticker">SOL</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-trx">T</div><div class="asset-marquee-name">TRON</div><div class="asset-marquee-ticker">TRX</div></div>
+      <div class="asset-marquee-card"><div class="coin-icon coin-ltc">Ł</div><div class="asset-marquee-name">Litecoin</div><div class="asset-marquee-ticker">LTC</div></div>
+    </div>
+  </div>
+
+  <!-- Row 2 — Gift Cards (scrolls right) -->
+  <div class="assets-marquee-label" style="margin-top:28px;">
+    <span class="assets-marquee-tag">Gift Cards</span>
+  </div>
+  <div class="assets-marquee-wrap">
+    <div class="assets-marquee-fade assets-marquee-fade-left" aria-hidden="true"></div>
+    <div class="assets-marquee-fade assets-marquee-fade-right" aria-hidden="true"></div>
+    <div class="assets-marquee-track assets-scroll-right">
+      <!-- Set 1 -->
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-amazon.png" alt="Amazon"></div><div class="asset-marquee-name">Amazon</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-apple.png" alt="Apple"></div><div class="asset-marquee-name">Apple</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-google.png" alt="Google Play"></div><div class="asset-marquee-name">Google Play</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-steam.png" alt="Steam"></div><div class="asset-marquee-name">Steam</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-netflix.png" alt="Netflix"></div><div class="asset-marquee-name">Netflix</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-itunes.png" alt="iTunes"></div><div class="asset-marquee-name">iTunes</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-ebay.png" alt="eBay"></div><div class="asset-marquee-name">eBay</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-walmart.png" alt="Walmart"></div><div class="asset-marquee-name">Walmart</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-xbox.png" alt="Xbox"></div><div class="asset-marquee-name">Xbox</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-amex.png" alt="Amex"></div><div class="asset-marquee-name">Amex</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-amazon.png" alt="Amazon"></div><div class="asset-marquee-name">Amazon</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-apple.png" alt="Apple"></div><div class="asset-marquee-name">Apple</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-google.png" alt="Google Play"></div><div class="asset-marquee-name">Google Play</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-steam.png" alt="Steam"></div><div class="asset-marquee-name">Steam</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-netflix.png" alt="Netflix"></div><div class="asset-marquee-name">Netflix</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-itunes.png" alt="iTunes"></div><div class="asset-marquee-name">iTunes</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-ebay.png" alt="eBay"></div><div class="asset-marquee-name">eBay</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-walmart.png" alt="Walmart"></div><div class="asset-marquee-name">Walmart</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-xbox.png" alt="Xbox"></div><div class="asset-marquee-name">Xbox</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+      <div class="asset-marquee-card"><div class="gc-marquee-icon gc-img-icon"><img src="assets/images/gc-amex.png" alt="Amex"></div><div class="asset-marquee-name">Amex</div><div class="asset-marquee-ticker" style="color:var(--text-muted);">Gift Card</div></div>
+    </div>
+  </div>
+
+  <!-- CTA row -->
+  <div class="assets-marquee-cta">
+    <a href="https://wa.me/2347019108587?text=Hello%2C%20I%20want%20to%20trade%20on%20OfficialValue%20Exchange"
+       target="_blank" rel="noopener noreferrer"
+       class="btn btn-primary btn-lg">
+      Trade Any Asset Now &rarr;
+    </a>
+    <button class="btn btn-ghost btn-lg" onclick="showPage('rates')">
+      View All Rates
+    </button>
+  </div>
+
 </section>
+
 
 
 <!-- ═══════════════════════════════════════════════════════
