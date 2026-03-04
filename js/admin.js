@@ -233,3 +233,103 @@
   })();
 
 })();
+
+/* ═══════════════════════════════════════════════════════════
+   ADMIN AUTH — login, logout, password management
+   Kept here (not in admin.html) so functions are on window
+   before the page fragment is injected into the DOM.
+═══════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  var HASH_KEY     = 'ov_admin_pw_hash';
+  var DEFAULT_HASH = 'a3d4e8f1b2c9a7e0f5d3b6c1e4a8d2f7b9c0e3a6d5f8b1c4e7a0d3f6b9c2e5a8';
+
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf))
+      .map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  function getStoredHash() {
+    try { return localStorage.getItem(HASH_KEY) || DEFAULT_HASH; } catch(e){ return DEFAULT_HASH; }
+  }
+
+  function isUnlocked() {
+    try { return sessionStorage.getItem('ov_admin_auth') === '1'; } catch(e){ return false; }
+  }
+  function setUnlocked(v) {
+    try { sessionStorage.setItem('ov_admin_auth', v ? '1' : ''); } catch(e){}
+  }
+
+  function showPanel() {
+    var l = document.getElementById('adminLoginSection');
+    var p = document.getElementById('adminAuthenticatedPanel');
+    if (l) l.style.display = 'none';
+    if (p) p.classList.add('visible');
+    if (typeof window.initAdminPanel === 'function') window.initAdminPanel();
+  }
+
+  function showLogin() {
+    var l = document.getElementById('adminLoginSection');
+    var p = document.getElementById('adminAuthenticatedPanel');
+    if (l) l.style.display = '';
+    if (p) p.classList.remove('visible');
+    setUnlocked(false);
+  }
+
+  /* Called by main.js after admin page is injected */
+  window.initAdminAuth = function () {
+    if (isUnlocked()) showPanel();
+  };
+
+  window.adminLogin = async function () {
+    var input = document.getElementById('adminPwInput');
+    var errEl = document.getElementById('adminLoginError');
+    if (!input || !input.value) return;
+    var hash         = await sha256(input.value);
+    var stored       = getStoredHash();
+    var defaultMatch = await sha256('OfficialValue2026');
+    if (hash === stored || (stored === DEFAULT_HASH && hash === defaultMatch)) {
+      setUnlocked(true);
+      input.value = '';
+      if (errEl) errEl.classList.remove('show');
+      showPanel();
+    } else {
+      input.classList.add('shake');
+      if (errEl) errEl.classList.add('show');
+      setTimeout(function(){ input.classList.remove('shake'); }, 400);
+    }
+  };
+
+  window.adminLogout = function () { showLogin(); };
+
+  window.adminTogglePw = function () {
+    var i = document.getElementById('adminPwInput');
+    if (i) i.type = i.type === 'password' ? 'text' : 'password';
+  };
+
+  window.adminToggleChangePw = function () {
+    var f = document.getElementById('changePwForm');
+    if (f) f.classList.toggle('open');
+  };
+
+  window.adminChangePassword = async function () {
+    var p1  = document.getElementById('newPw1');
+    var p2  = document.getElementById('newPw2');
+    var msg = document.getElementById('changePwMsg');
+    if (!p1 || !p2) return;
+    if (!p1.value || p1.value.length < 6) {
+      if (msg) { msg.style.color='#ef4444'; msg.textContent='Min 6 characters.'; } return;
+    }
+    if (p1.value !== p2.value) {
+      if (msg) { msg.style.color='#ef4444'; msg.textContent='Passwords do not match.'; } return;
+    }
+    var hash = await sha256(p1.value);
+    try { localStorage.setItem(HASH_KEY, hash); } catch(e){}
+    p1.value = ''; p2.value = '';
+    if (msg) { msg.style.color='var(--green)'; msg.textContent='Password updated!'; }
+    setTimeout(function(){ if(msg) msg.textContent=''; }, 3000);
+  };
+
+})();
