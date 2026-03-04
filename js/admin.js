@@ -164,7 +164,7 @@
           '</span>' +
         '</td>' +
         '<td>' +
-          '<a href="https://wa.me/2347019108587?text=I+want+to+sell+my+' +
+          '<a href="https://wa.me/2347033769143?text=I+want+to+sell+my+' +
             encodeURIComponent(r.name) + '+gift+card" ' +
             'target="_blank" rel="noopener noreferrer" ' +
             'class="crypto-card-btn crypto-card-btn-primary" ' +
